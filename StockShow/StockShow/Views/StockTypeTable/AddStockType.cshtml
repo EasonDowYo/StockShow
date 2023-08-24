@@ -1,0 +1,82 @@
+﻿@model IEnumerable<StockShow.Models.StockTypeTable>
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddStockType</title>
+</head>
+<body>
+    <form asp-action="AddStockType"  onsubmit="return xxx()" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+        </div>
+        <label class="control-label" for="StockType">StockType</label>
+        <input class="form-control input-validation-error" type="text" data-val="true" data-val-required="The StockType field is required." id="StockType" name="StockType" value="">
+        <input type="submit" value="AddStockType" class="btn btn-primary">
+        
+
+@*
+        <div class="form-group">
+            <label asp-for="@Model[0].StockType" class="control-label"></label>
+            <input asp-for="StockType" class="form-control"/>
+            <span asp-validation-for="StockType" class="text-danger"></span>
+        </div>*@
+    </form>
+
+<p>List of current stock types</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StockTypeIndex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockType)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockTypeIndex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StockTypeIndex">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StockTypeIndex">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StockTypeIndex">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<script>
+    function xxx(){
+            var x = document.forms.AddStockType_FormName.StockType.value;
+            alert("Input is "+ x);
+            if(x==""){
+                alert("Please fill the StockType");
+            }
+                
+            
+
+    }
+
+
+</script>
+
+
+</body>
+</html>

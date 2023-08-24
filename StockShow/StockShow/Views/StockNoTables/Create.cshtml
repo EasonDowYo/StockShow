@@ -1,0 +1,106 @@
+﻿@model StockShow.Models.StockNoTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <script>
+        function myFunction() {
+            alert("Auto Get StockType by select StockTypeIndex !~");
+            var dropdownList = document.getElementById('StockTypeIndex');
+            var selecetedIndex = dropdownList.selectedIndex;
+            var selectedOption = dropdownList.options[selecetedIndex];
+            var x = document.getElementById("StockTypeIndex").textContent;
+            document.getElementById("StockType").value = selectedOption.text;
+        }
+    </script>
+<h4>StockNoTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StockNo" class="control-label"></label>
+                <input asp-for="StockNo" class="form-control" />
+                <span asp-validation-for="StockNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockName" class="control-label"></label>
+                <input asp-for="StockName" class="form-control" />
+                <span asp-validation-for="StockName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockNoName" class="control-label"></label>
+                    <input asp-for="StockNoName" value="GG" class="form-control" readonly="@(true)" />
+                <span asp-validation-for="StockNoName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockType" class="control-label"></label>
+                    <input asp-for="StockType" class="form-control" readonly="@(true)" />
+                <span asp-validation-for="StockType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockTypeIndex" class="control-label"></label>
+                    <select asp-for="StockTypeIndex" class="form-control" onchange="myFunction()" asp-items="ViewBag.StockTypeIndex"></select>
+                    <p>選完StockTypeIndex   StockType自動會變</p>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note1" class="control-label"></label>
+                <input asp-for="Note1" class="form-control" />
+                <span asp-validation-for="Note1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note2" class="control-label"></label>
+                <input asp-for="Note2" class="form-control" />
+                <span asp-validation-for="Note2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note3" class="control-label"></label>
+                <input asp-for="Note3" class="form-control" />
+                <span asp-validation-for="Note3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note4" class="control-label"></label>
+                <input asp-for="Note4" class="form-control" />
+                <span asp-validation-for="Note4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note5" class="control-label"></label>
+                <input asp-for="Note5" class="form-control" />
+                <span asp-validation-for="Note5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note6" class="control-label"></label>
+                <input asp-for="Note6" class="form-control" />
+                <span asp-validation-for="Note6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note7" class="control-label"></label>
+                <input asp-for="Note7" class="form-control" />
+                <span asp-validation-for="Note7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

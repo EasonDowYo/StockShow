@@ -1,0 +1,74 @@
+﻿@model StockShow.Models.StockTypeTable
+
+@{
+    Layout = "/Views/Shared/myShareHomePage.cshtml";
+    ViewBag.Title = "AddStockType2";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddStockType2</title>
+</head>
+<body>
+
+    <h4>StockTypeTable</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="AddStockType2">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="StockType" class="control-label"></label>
+                    <input asp-for="StockType" class="form-control" />
+                    <span asp-validation-for="StockType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>StockTypeIndex</th>
+                <th>StockTypeName</th>
+            </tr>
+        </thead>
+
+
+        @foreach (var a in ViewBag.StockTypeList)
+        {
+            <tr>
+                <td>@a.StockTypeIndex</td>
+                <td>@a.StockType</td>
+                <td>
+                    <a href="/StockTypeTable/EditStockType/@a.StockTypeIndex">Edit</a>
+                    <a href="/StockTypeTable/DetailsStockType/@a.StockTypeIndex">Details</a>
+                    <a href="/StockTypeTable/DeleteStockType/@a.StockTypeIndex">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+        <div>@Html.Raw(Json.Serialize(ViewBag.StockTypeList))</div>
+        <script>
+            var arrayOfArrays = @Html.Raw(Json.Serialize(ViewBag.StockTypeList));
+            console.log(arrayOfArrays);
+        </script>
+
+    </body>
+    </html>

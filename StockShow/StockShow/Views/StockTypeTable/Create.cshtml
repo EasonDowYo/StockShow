@@ -1,0 +1,48 @@
+﻿@model StockShow.Models.StockTypeTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>StockTypeTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            1
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            2
+            <div class="form-group">
+                3
+                <label asp-for="StockType" class="control-label"></label>
+                4
+                <input asp-for="StockType" class="form-control" />
+                5
+                <span asp-validation-for="StockType" class="text-danger"></span>
+            </div>
+            6
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
