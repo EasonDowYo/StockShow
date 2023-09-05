@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bi5IWT1UPOJWC8ls7qs6bHvC7qJb4C/NE0i0g8iXlv/RnXGu1eSvnLKgBnelyt2+sZ3pWCarg9t8sEKSyoH6Vg==",
+  "dgSpecHash": "1RVcJXvNnEefjOsgOZot3rO0ayBd1emljQo4d9k3+74Lg8fXGOLEH08xfmjkUbejt6y/ECIFT7ZwYOMW26GgMQ==",
   "success": true,
-  "projectFilePath": "D:\\Code\\UpdateStockDataConsole\\UpdateStockDataConsole\\UpdateStockDataConsole.csproj",
+  "projectFilePath": "D:\\Code\\StockShow\\UpdateStockDataConsole\\UpdateStockDataConsole\\UpdateStockDataConsole.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\YuEason\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\YuEason\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

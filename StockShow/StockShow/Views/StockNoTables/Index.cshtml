@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<StockShow.Models.StockNoTable>
 
 @{
-    Layout = null;
+    Layout = "/Views/Shared/myHomeLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+    <table style="border:1px solid;">
     <thead>
         <tr>
             <th>

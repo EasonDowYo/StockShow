@@ -87,7 +87,8 @@ namespace StockShow.Controllers
             {
                 return NotFound();
             }
-            ViewData["StockTypeIndex"] = new SelectList(_context.StockTypeTables, "StockTypeIndex", "StockTypeIndex", stockNoTable.StockTypeIndex);
+            SelectList a = new SelectList(_context.StockTypeTables, "StockTypeIndex", "StockTypeIndex", stockNoTable.StockType);
+            ViewData["StockTypeIndex"] = a;
             return View(stockNoTable);
         }
 

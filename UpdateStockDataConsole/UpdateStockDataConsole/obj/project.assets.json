@@ -476,11 +476,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\UpdateStockDataConsole\\UpdateStockDataConsole\\UpdateStockDataConsole.csproj",
+      "projectUniqueName": "D:\\Code\\StockShow\\UpdateStockDataConsole\\UpdateStockDataConsole\\UpdateStockDataConsole.csproj",
       "projectName": "UpdateStockDataConsole",
-      "projectPath": "D:\\Code\\UpdateStockDataConsole\\UpdateStockDataConsole\\UpdateStockDataConsole.csproj",
+      "projectPath": "D:\\Code\\StockShow\\UpdateStockDataConsole\\UpdateStockDataConsole\\UpdateStockDataConsole.csproj",
       "packagesPath": "C:\\Users\\YuEason\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\UpdateStockDataConsole\\UpdateStockDataConsole\\obj\\",
+      "outputPath": "D:\\Code\\StockShow\\UpdateStockDataConsole\\UpdateStockDataConsole\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

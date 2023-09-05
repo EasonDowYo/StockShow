@@ -83,8 +83,6 @@ namespace UpdateStockDataConsole.TableModel
                 _startDate = _startDate.AddDays(1 - _startDate.Day);
             }
 
-
-            int month_add = 0;
             try
             {
                 while (true)
@@ -151,6 +149,7 @@ namespace UpdateStockDataConsole.TableModel
                                     sqlCommand.Parameters.AddWithValue("@Transaction", temp_Transaction);  // = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][8]);
 
                                     sqlCommand.Parameters.AddWithValue("@StockNo", _stock);// = _stock;
+                                    
                                     sqlCommand.ExecuteNonQuery();
 
                                     Console.WriteLine($@"{_stock} Date:{tempdate} Updated ");

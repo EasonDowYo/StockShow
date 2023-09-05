@@ -7,16 +7,29 @@ using System.Data;
 using UpdateStockDataConsole.TableModel;
 
 Console.WriteLine("Hello, World!");
+
+DataTable StockNoList = StockNoTableModelFunc.GetStockNoList();
 //string url = $@"http://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20160501&stockNo=2330";
+if (StockNoList.Rows.Count <= 0)
+{
+    Console.WriteLine("Query Fail [StockNolist]");
+    return;
+}
+DateTime n = DateTime.Now;
+DateTime EndTime = new DateTime(n.Year, n.Month, n.Day, 00, 00, 00);
+DateTime StartDate = new DateTime(2020, 1, 1, 0, 0, 0);
 
-var temp_PriceDiff = Convert.ToDouble("-7.00").ToString();
+foreach (DataRow row in StockNoList.AsEnumerable())
+{
+//#pragma warning disable CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
+    string StockNo = row.Field<string>("StockNo");
+    //#pragma warning restore CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
+
+    StockDataTableModelFunc.UpdateStockDataToDate(StockNo, StartDate, EndTime);
+
+}
 
 
-DateTime dt = StockDataTableModelFunc.GetTheLastDateFromStock("2330");
-
-DateTime dt2 = new DateTime(2023, 08, 20, 6, 20, 40);
-DateTime dt22 = new DateTime(2020, 1, 1, 0, 0, 0);
-StockDataTableModelFunc.UpdateStockDataToDate("2330", dt22, dt2);
 
 //Task<StockDataFromAPIModel?> stockDataFromAPIModel = StockAPIFunction.GetStockDataFromAPI("2330", dt2);
 //client.Timeout = TimeSpan.FromSeconds(30);

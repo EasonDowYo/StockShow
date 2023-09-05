@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="/css/site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>H1</h1>
+    @await RenderSectionAsync("testSection")
+    @RenderBody()
+
+    @await RenderSectionAsync("Scripts", required: false)
+    
+    <h2>H2</h2>
+</body>
+</html>

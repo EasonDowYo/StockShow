@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<body>
+
+
+    <h2>Let AJAX change this text</h2>
+    <button type="button" onclick="CallFetch()">CallFetch1</button>
+
+    <button type="button" onclick="CallFetch2()">CallFetch1</button>
+    <div id="demo">
+    </div>
+
+    <script>
+        function CallFetch() {
+            //console.log("-----Second fetch-----");
+            fetch('CallFetch1')
+                .then(response => {
+                    return response.json()//解析成一個json 物件
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        function CallFetch2() {
+            console.log("-----Third fetch-----");
+            let Post_Obj = { id: 4, name: "DDD" };
+            fetch('CallFetch2', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Post_Obj)
+            })
+                .then((response) => {
+                    return response.json()//解析成一個json 物件
+                })
+                .then((data) => {
+                    console.log(data);
+                })
+        }
+    </script>
+</body>
+
+
+</html>

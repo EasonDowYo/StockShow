@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>StockShow - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="/css/SideBar.css" rel="stylesheet" type="text/css" />
+    
+</head>
+<body>
+    <div class="d-flex">
+        <div class="flex-shrink-0 p-3 bg-dark " style="width: 220px;">
+            <a href="/" class="d-flex align-items-center pb-3 mb-3  text-decoration-none border-bottom">
+                <span class="fs-3 fw-bold">Stock Show</span>
+            </a>
+            <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+                    <button class="btn sidebar-btn-toggle align-items-center  rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                        Home
+                    </button>
+                    <div class="collapse" id="home-collapse">
+                        <ul class="sidebar-btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class=" rounded">Overview</a></li>
+                            <li><a href="#" class=" rounded">Updates</a></li>
+                            <li><a href="#" class="rounded">Reports</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn sidebar-btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Table Edit
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="sidebar-btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="~/StockTypeTable/AddStockType2" class=" rounded">Stock Type</a></li>
+                            <li><a href="~/StockNoTables/Index" class=" rounded">Stock Number</a></li>
+                            <li><a href="#" class=" rounded">Monthly</a></li>
+                            <li><a href="#" class=" rounded">Annually</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn sidebar-btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                        Orders
+                    </button>
+                    <div class="collapse" id="orders-collapse">
+                        <ul class="sidebar-btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class=" rounded">New</a></li>
+                            <li><a href="#" class=" rounded">Processed</a></li>
+                            <li><a href="#" class=" rounded">Shipped</a></li>
+                            <li><a href="#" class="rounded">Returned</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="border-top my-3"></li>
+                <li class="mb-1">
+                    <button class="btn sidebar-btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                        Account
+                    </button>
+                    <div class="collapse" id="account-collapse">
+                        <ul class="sidebar-btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class=" rounded">New...</a></li>
+                            <li><a href="#" class="rounded">Profile</a></li>
+                            <li><a href="#" class=" rounded">Settings</a></li>
+                            <li><a href="#" class=" rounded">Sign out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="p-3">
+            @RenderBody()
+        </div>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <h2>H2</h2>
+</body>
+</html>

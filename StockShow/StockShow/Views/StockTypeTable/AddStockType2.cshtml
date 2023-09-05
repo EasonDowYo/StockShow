@@ -1,8 +1,8 @@
 ﻿@model StockShow.Models.StockTypeTable
 
 @{
-    Layout = "/Views/Shared/myShareHomePage.cshtml";
-    ViewBag.Title = "AddStockType2";
+    Layout = "/Views/Shared/myHomeLayout.cshtml";
+    ViewBag.Title = "[Stock Type]";
 }
 
 <!DOCTYPE html>
@@ -22,24 +22,25 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="StockType" class="control-label"></label>
-                    <input asp-for="StockType" class="form-control" />
+                    <input asp-for="StockType" class="form-control" placeholder="ex:ETF" />
                     <span asp-validation-for="StockType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Add Stock Type" class="btn btn-primary" />
                 </div>
             </form>
         </div>
     </div>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
+
+    <!--  Stock Type Table1 using Viewbag -->
+    <h1>Stock Type List</h1>
     <table border="1">
         <thead>
             <tr>
-                <th>StockTypeIndex</th>
-                <th>StockTypeName</th>
+                <td>StockTypeIndex</td>
+                <td>StockTypeName</td>
+                <td></td>
             </tr>
         </thead>
 
@@ -50,6 +51,7 @@
                 <td>@a.StockTypeIndex</td>
                 <td>@a.StockType</td>
                 <td>
+                    <button type="button" class="btn btn-primary" onclick="EditValueInsert(@a.StockTypeIndex,`@a.StockType` )">Edit</button>
                     <a href="/StockTypeTable/EditStockType/@a.StockTypeIndex">Edit</a>
                     <a href="/StockTypeTable/DetailsStockType/@a.StockTypeIndex">Details</a>
                     <a href="/StockTypeTable/DeleteStockType/@a.StockTypeIndex">Delete</a>
@@ -59,16 +61,121 @@
 
     </table>
 
-    @section Scripts {
-        @{
-            await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        }
-    }
-        <div>@Html.Raw(Json.Serialize(ViewBag.StockTypeList))</div>
-        <script>
-            var arrayOfArrays = @Html.Raw(Json.Serialize(ViewBag.StockTypeList));
-            console.log(arrayOfArrays);
-        </script>
 
-    </body>
-    </html>
+    <!-- Button trigger modal -->
+    @*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>*@
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <!--  Model Header  -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--  Model Body  -->
+                <div class="modal-body">
+                    <form action="EditStockType2">
+                        <div class="form-group">
+                            <label class="control-label" for="StockTypeIndex_edit">StockTypeIndex</label>
+                            <input id="StockTypeIndex_edit" name="StockTypeIndex_edit" class="form-control" type="text" data-val-required="The StockTypeIndex field is required." />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="StockType_edit">StockType</label>
+                            <input id="StockType_edit" name="StockType_edit" class="form-control" type="text" data-val-required="The StockType field is required." />
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" onclick="EditValuePost()">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+                <!--  Model Footer  -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr />
+    <!--  Stock Type Table1 using Viewbag & JS -->
+    <table id="myTable">
+    </table>
+
+    <div>@Html.Raw(Json.Serialize(ViewBag.StockTypeList))</div>
+
+
+    <script>
+        var arrayOfArrays = @Html.Raw(Json.Serialize(ViewBag.StockTypeList));
+        console.log(arrayOfArrays);
+
+
+        var columnNames = Object.keys(arrayOfArrays[0]);
+
+        var table = document.getElementById("myTable");
+        table.style.border = "5px solid red";
+
+        // Create Rows
+        for (let i = 0; i < arrayOfArrays.length; i++) {
+            let row = table.insertRow(i);
+            for (let j = 0; j < columnNames.length; j++) {
+                let cell = row.insertCell(j);// Row number
+                cell.innerHTML = arrayOfArrays[i][columnNames[j]];
+            }
+        }
+
+        // Create Header
+        var header = table.createTHead();
+        var header_row = header.insertRow(0);
+        for (let i = 0; i < columnNames.length; i++) {
+            let header_cell = header_row.insertCell(i);
+            header_cell.innerHTML = columnNames[i];
+        }
+
+        //
+        var td_el = document.querySelectorAll('td');
+        for (var ii = 0; ii < td_el.length; ii++) {
+            td_el[ii].style.border = "1px solid brown";
+        }
+
+
+        function EditValueInsert(_stockTypeIndex,_stockType){
+            console.log(_stockType);
+            console.log(_stockTypeIndex);
+            var StockTypeIndex_edit_i = document.getElementById("StockTypeIndex_edit");
+            var StockType_edit_i = document.getElementById("StockType_edit");
+            StockTypeIndex_edit_i.value=_stockTypeIndex;
+            StockType_edit_i.value = _stockType;
+
+            $('#exampleModal').modal('show');
+
+
+        }
+        function EditValuePost() {
+
+
+            $('#exampleModal').modal('hide');
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                console.log("Update Complete");
+            }
+            var StockTypeIndex_edit_i = document.getElementById("StockTypeIndex_edit");
+            var StockType_edit_i = document.getElementById("StockType_edit");
+            xhttp.open("POST", "/StockTypeTable/EditStockType2");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("StockTypeIndex_edit=" + StockTypeIndex_edit_i.value + "&StockType_edit=" + StockType_edit_i.value);
+        }
+    </script>
+
+</body>
+</html>
+
+
