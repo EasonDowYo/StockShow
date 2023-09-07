@@ -22,7 +22,26 @@
     <div>
         <h4>Selected StockType </h4>
         <hr />
-        <dl class="row">
+        <table>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.StockTypeIndex)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.StockTypeIndex)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.StockType)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.StockType)
+                </td>
+            </tr>
+        </table>
+        @*<dl class="row">
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.StockTypeIndex)
             </dt>
@@ -36,7 +55,7 @@
                 @Html.DisplayFor(model => model.StockType)
             </dd>
             
-        </dl>
+        </dl>*@
 
         <form asp-action="DeleteStockType">
             <input type="hidden" asp-for="StockTypeIndex" />

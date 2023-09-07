@@ -87,96 +87,95 @@ namespace UpdateStockDataConsole.TableModel
             {
                 while (true)
                 {
-                    
+
+                    if (DateTime.Compare(_startDate, _targetDate) > 0) 
+                    {
+                        break;
+                    }
                     //DateTime tempTime = new DateTime(lastUpdateDate.Year, lastUpdateDate.Month,lastUpdateDate.Day);
-                    Task<StockDataFromAPIModel?> stockDataFromAPIModel = StockAPIFunction.GetStockDataFromAPI(_stock, new DateTime(_startDate.Year , _startDate.Month, 1));
-                    if (DateTime.Compare(_startDate, _targetDate) > 0) // If tempdate later than stockLastUpdateDate
+                    Task<StockDataFromAPIModel?> stockDataFromAPIModel = StockAPIFunction.GetStockDataFromAPI(_stock, new DateTime(_startDate.Year, _startDate.Month, 1));
+                    
+                    if (stockDataFromAPIModel.Result is null)// The if condition avoid  CS8600
                     {
+                        Console.WriteLine(" Call Stock API second times");
+                        stockDataFromAPIModel = StockAPIFunction.GetStockDataFromAPI(_stock, new DateTime(_startDate.Year, _startDate.Month, 1));
                         break;
                     }
 
-                    if (stockDataFromAPIModel.Result.data is not null)// The if condition avoid  CS8600
+                    if (stockDataFromAPIModel.Result.data is null)
+                        break;
+
+                    // Check whether each data needs to be inserted
+                    for (int i = 0; i < stockDataFromAPIModel.Result.data.Count; i++)
                     {
-                        // Check whether each data needs to be inserted
-                        for (int i = 0; i < stockDataFromAPIModel.Result.data.Count; i++)
+                        DateTime tempdate = Convert.ToDateTime(stockDataFromAPIModel.Result.data[i][0].ToString()); //[i][0]第i天的日期
+                        tempdate = tempdate.AddYears(1911);
+
+                        // Compare(t1,t2)<0   t1 earlier than t2     Compare(t1,t2)>0   t1 later than t2
+                        if (DateTime.Compare(tempdate, stockLastUpdateDate) > 0) // If tempdate later than stockLastUpdateDate
                         {
-                            DateTime tempdate = Convert.ToDateTime(stockDataFromAPIModel.Result.data[i][0].ToString()); //[i][0]第i天的日期
-                            tempdate = tempdate.AddYears(1911);
-
-                            // Compare(t1,t2)<0   t1 earlier than t2     Compare(t1,t2)>0   t1 later than t2
-                            if (DateTime.Compare(tempdate, stockLastUpdateDate) > 0) // If tempdate later than stockLastUpdateDate
+                            //string InsertDataTableSQLCMD = InsertSQLCommand();
+                            using (SqlDBConnect sqlDBConnect = new SqlDBConnect())
                             {
-                                //string InsertDataTableSQLCMD = InsertSQLCommand();
-                                using (SqlDBConnect sqlDBConnect = new SqlDBConnect())
-                                {
-                                    sqlDBConnect.SelectDB = DatabaseServer.DatabaseList.StockDB;
-                                    SqlCommand sqlCommand = new SqlCommand(StockDataTableModelFunc.InsertSQLCommand(), sqlDBConnect.SqlConn);
+                                sqlDBConnect.SelectDB = DatabaseServer.DatabaseList.StockDB;
+                                SqlCommand sqlCommand = new SqlCommand(StockDataTableModelFunc.InsertSQLCommand(), sqlDBConnect.SqlConn);
 
-                                    //sqlCommand.CommandText = StockDataTableModelFunc.InsertSQLCommand();
-                                    sqlCommand.Parameters.AddWithValue("@RecordDate", tempdate.ToString("yyyy-MM-dd"));//   ["@RecordDate"].Value = tempdate.ToString();
+                                //sqlCommand.CommandText = StockDataTableModelFunc.InsertSQLCommand();
+                                sqlCommand.Parameters.AddWithValue("@RecordDate", tempdate.ToString("yyyy-MM-dd"));//   ["@RecordDate"].Value = tempdate.ToString();
 
-                                    // 成交股數
-                                    var temp_TradeVolumn = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][1].Replace(",", "")).ToString();
-                                    sqlCommand.Parameters.AddWithValue("@TradeVolumn", temp_TradeVolumn);// = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][1]);
+                                // 成交股數
+                                var temp_TradeVolumn = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][1].Replace(",", "")).ToString();
+                                sqlCommand.Parameters.AddWithValue("@TradeVolumn", temp_TradeVolumn);// = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][1]);
 
-                                    // 成交金額
-                                    var temp_TradeValue = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][2].Replace(",", "")).ToString();
-                                    sqlCommand.Parameters.AddWithValue("@TradeValue", temp_TradeValue);  // = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][2]);
+                                // 成交金額
+                                var temp_TradeValue = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][2].Replace(",", "")).ToString();
+                                sqlCommand.Parameters.AddWithValue("@TradeValue", temp_TradeValue);  // = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][2]);
 
-                                    // 開盤價
-                                    var temp_OpenningPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][3]).ToString();
-                                    sqlCommand.Parameters.AddWithValue("@OpenningPrice", temp_OpenningPrice);  // = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][3]);
+                                // 開盤價
+                                var temp_OpenningPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][3]).ToString();
+                                sqlCommand.Parameters.AddWithValue("@OpenningPrice", temp_OpenningPrice);  // = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][3]);
 
-                                    // 收盤價
-                                    var temp_ClosingPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][4]).ToString();
-                                    sqlCommand.Parameters.AddWithValue("@ClosingPrice", temp_ClosingPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][4]);
+                                // 收盤價
+                                var temp_ClosingPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][4]).ToString();
+                                sqlCommand.Parameters.AddWithValue("@ClosingPrice", temp_ClosingPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][4]);
 
-                                    // 最高價
-                                    var temp_HighestPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][5]).ToString();
-                                    sqlCommand.Parameters.AddWithValue("@HighestPrice", temp_HighestPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][5]);
+                                // 最高價
+                                var temp_HighestPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][5]).ToString();
+                                sqlCommand.Parameters.AddWithValue("@HighestPrice", temp_HighestPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][5]);
 
-                                    // 最低價
-                                    //var aaa = stockDataFromAPIModel.Result.data[i][6].Replace("X", "");
-                                    var temp_LowestPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][6].Replace("X", "")).ToString();
-                                    sqlCommand.Parameters.AddWithValue("@LowestPrice", temp_LowestPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][6]);
+                                // 最低價
+                                //var aaa = stockDataFromAPIModel.Result.data[i][6].Replace("X", "");
+                                var temp_LowestPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][6].Replace("X", "")).ToString();
+                                sqlCommand.Parameters.AddWithValue("@LowestPrice", temp_LowestPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][6]);
 
-                                    // 漲跌價差
-                                    var temp_PriceDiff = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][7].Replace("X", "")).ToString();
-                                    sqlCommand.Parameters.AddWithValue("@PriceDiff", temp_PriceDiff);  // = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][7]);
+                                // 漲跌價差
+                                var temp_PriceDiff = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][7].Replace("X", "")).ToString();
+                                sqlCommand.Parameters.AddWithValue("@PriceDiff", temp_PriceDiff);  // = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][7]);
 
-                                    // 交易筆數
-                                    var temp_Transaction = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][8].Replace(",", "")).ToString();
-                                    sqlCommand.Parameters.AddWithValue("@Transaction", temp_Transaction);  // = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][8]);
+                                // 交易筆數
+                                var temp_Transaction = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][8].Replace(",", "")).ToString();
+                                sqlCommand.Parameters.AddWithValue("@Transaction", temp_Transaction);  // = Convert.ToInt64(stockDataFromAPIModel.Result.data[i][8]);
 
-                                    sqlCommand.Parameters.AddWithValue("@StockNo", _stock);// = _stock;
-                                    
-                                    sqlCommand.ExecuteNonQuery();
+                                sqlCommand.Parameters.AddWithValue("@StockNo", _stock);// = _stock;
 
-                                    Console.WriteLine($@"{_stock} Date:{tempdate} Updated ");
-                                }
+                                sqlCommand.ExecuteNonQuery();
 
-
-                                
-
+                                Console.WriteLine($@"{_stock} Date:{tempdate} Updated ");
                             }
-                        }  // End -> for (int i = 0; i < stockDataFromAPIModel.Result.data.Count; i++)
-                        List<string> this_round_of_data = stockDataFromAPIModel.Result.data.Last();
-                        System.Threading.Thread.Sleep(7000);
-                        //stockLastUpdateDate = Convert.ToDateTime(this_round_of_data[0]);
-                        _startDate = _startDate.AddMonths(1);
-                        //stockLastUpdateDate = stockLastUpdateDate.AddYears(1911);
 
 
-                    }  // End  -> if (stockDataFromAPIModel.Result is not null)// The if condition avoid  CS8600 
-                    else
-                    {
-                        break;
-                    }
-                    // var stockDataFromAPIModel2 = stockDataFromAPIModel.Result.data[0][0].ToString();
-                    //var a = Convert.ToDateTime(stockDataFromAPIModel.Result.data[0][0].ToString()); //[i][0]第i天的日期
 
-                    //int i = 0;
-                }
+
+                        }
+                    }  // End -> for (int i = 0; i < stockDataFromAPIModel.Result.data.Count; i++)
+                    List<string> this_round_of_data = stockDataFromAPIModel.Result.data.Last();
+                    System.Threading.Thread.Sleep(9000);
+                    //stockLastUpdateDate = Convert.ToDateTime(this_round_of_data[0]);
+                    _startDate = _startDate.AddMonths(1);
+                    //stockLastUpdateDate = stockLastUpdateDate.AddYears(1911);
+
+
+                } // END while(true)
             }
             catch (Exception ex)
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.Differencing;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using StockShow.Models;
 
@@ -76,7 +77,7 @@ namespace StockShow.Controllers
             return View("AddStockType",data);
         }
 
-        public IActionResult AddStockType2()
+        public IActionResult StockTypeHandle()
         {
             List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
             ViewBag.StockTypeList = stockType_List; // 使用ViewBag傳遞資料
@@ -85,15 +86,24 @@ namespace StockShow.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddStockType2( [Bind("StockType")] StockTypeTable stockTypeTable)
+        public IActionResult StockTypeHandle( [Bind("StockType")] StockTypeTable stockTypeTable)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Add(stockTypeTable);
-                    _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(AddStockType2));
+                    //_context.Add(stockTypeTable);
+                    //_context.SaveChangesAsync();
+
+                    string insertSQL = $@"INSERT INTO [StockTypeTable] ([StockType]) VALUES ('{stockTypeTable.StockType}');";
+                    using(SQLHandler.DBConnect dbConn = new SQLHandler.DBConnect())
+                    {
+                        dbConn.SelectDB = SQLHandler.DBServer.DatabaseList.StockDB;
+                        //SqlCommand sqlCommand = new SqlCommand(insertSQL, dbConn.SqlConn);
+
+                        dbConn.DoOnlyExecute(insertSQL);
+                    }
+                    return RedirectToAction(nameof(StockTypeHandle));
                 }
                 catch(Exception ex) 
                 {
@@ -102,7 +112,7 @@ namespace StockShow.Controllers
             }
             List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
             ViewBag.StockTypeList = stockType_List;
-            return View("AddStockType2");
+            return View("StockTypeHandle");
         }
 
         
@@ -153,7 +163,7 @@ namespace StockShow.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(AddStockType2));
+                return RedirectToAction(nameof(StockTypeHandle));
             }
             ViewData["StockTypeIndex"] = new SelectList(_context.StockTypeTables, "StockTypeIndex", "StockType", stockTypeTable.StockTypeIndex);
             return View(stockTypeTable);
@@ -186,7 +196,7 @@ namespace StockShow.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(AddStockType2));
+                return RedirectToAction(nameof(StockTypeHandle));
             }
             ViewData["StockTypeIndex"] = new SelectList(_context.StockTypeTables, "StockTypeIndex", "StockType", update_stockType.StockTypeIndex);
             return View(update_stockType);
@@ -200,8 +210,7 @@ namespace StockShow.Controllers
                 return NotFound();
             }
 
-            StockTypeTable a = await _context.StockTypeTables
-                .FirstOrDefaultAsync(m => m.StockTypeIndex == id);
+            StockTypeTable a = await _context.StockTypeTables.FirstOrDefaultAsync(m => m.StockTypeIndex == id);
             if (a == null)
             {
                 return NotFound();  
@@ -229,7 +238,7 @@ namespace StockShow.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(StockTypeHandle));
         }
 
 

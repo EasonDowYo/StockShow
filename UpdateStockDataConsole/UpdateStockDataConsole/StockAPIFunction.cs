@@ -35,7 +35,7 @@ namespace UpdateStockDataConsole
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine("[Calling Stock API]"+ex.ToString());
+                    Console.WriteLine("[Calling Stock API ERROR]"+ex.ToString());
                     return null;
                 }
             }
