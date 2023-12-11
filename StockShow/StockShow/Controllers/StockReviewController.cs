@@ -17,19 +17,20 @@ namespace StockShow.Controllers
         [HttpPost]
         public JsonResult Get5DaysData_Post([FromBody] Models.StockDataTable input_json)
         {
-            
+
+            if (input_json.StockNo != null)
+            {
+                StockDataQuery query = new StockDataQuery();
+                DataTable dt = query.Get5DaysData(input_json.StockNo);
 
 
 
-            StockDataQuery query = new StockDataQuery();
-            DataTable dt = query.Get5DaysData(input_json.StockNo);
+                string json_output = JsonConvert.SerializeObject(dt);
 
-            
+                return Json(json_output);
+            }
 
-            string json_output =  JsonConvert.SerializeObject(dt);
-
-            return Json(json_output);
-            
+            return Json(null);
         }
     }
 }
