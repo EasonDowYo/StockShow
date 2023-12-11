@@ -161,14 +161,59 @@ namespace StockShow.Controllers
             {
                 _context.StockNoTables.Remove(stockNoTable);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool StockNoTableExists(string id)
         {
-          return _context.StockNoTables.Any(e => e.StockNo == id);
+            return _context.StockNoTables.Any(e => e.StockNo == id);
         }
+
+
+
+        //////////
+        // StockNoHandleAll
+        //////////
+
+        public IActionResult StockNoHandle()
+        {
+            // StockType Select Items
+            var StockTypeIndex_List = new SelectList(_context.StockTypeTables, "StockTypeIndex", "StockType");
+            ViewBag.StockTypeIndex = StockTypeIndex_List; // SelectList(資料表 ,選項的Value ,選項的Text)
+
+            List<StockNoTable> stockNo_List = _context.StockNoTables.ToList();
+            ViewBag.StockNoList = stockNo_List; // 使用ViewBag傳遞資料
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> StockNoHandle([Bind("StockNo,StockName,StockType,StockTypeIndex,Note1,Note2,Note3,Note4,Note5,Note6,Note7")] StockNoTable _stockNoTable)
+        {
+
+            //_stockNoTable.StockNoName = _stockNoTable.StockNo + " " + _stockNoTable.StockName;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Add(_stockNoTable);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(StockNoHandle));
+                }
+                catch(Exception e)
+                {
+                    return NotFound();
+                }
+            }
+            List<StockNoTable> stockNo_List = _context.StockNoTables.ToList();
+            ViewBag.StockNoList = stockNo_List; // 使用ViewBag傳遞資料
+            // StockType Select Items
+            ViewBag.StockTypeIndex = new SelectList(_context.StockTypeTables, "StockTypeIndex", "StockType"); // SelectList(資料表 ,選項的Value ,選項的Text)
+
+            return View("StockNoHandle");
+        }
+
     }
 }

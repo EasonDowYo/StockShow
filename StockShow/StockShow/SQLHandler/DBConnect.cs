@@ -48,7 +48,7 @@ namespace StockShow.SQLHandler
                 switch (_selectDB)
                 {
                     case DBServer.DatabaseList.StockDB:
-                        Server = $@".\SQLEXPRESS";
+                        Server = $@"DESKTOP-FPU2A87\SQLEXPRESS";
                         Database = "Stock_db";
                         //ConnStrBuilder.UserID = "YuEason";
                         //ConnStrBuilder.Password = "";

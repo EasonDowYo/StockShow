@@ -1,5 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
+    Layout = "/Views/Shared/myHomeLayout.cshtml";
+    ViewBag.Title = "[Stock Trend]";
 }
+
+AAAAAAAAAAAAAAAA
+<script>
+    
+
+
+
+    const postObj={
+        stockNo:"2330"
+    };
+    const requestOptions={
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(postObj)
+
+    };
+    console.log("111111111111111111")
+    //var Day5data;
+    const rawResponse =  fetch('Get5DaysData_Post', requestOptions);
+    //let Day5data = rawResponse.json();
+    var stkdata;
+    console.log("22222222222222222222")
+    rawResponse.then(response => response.json())
+        .then(data => {
+            stkdata=JSON.parse(data);
+        })
+        .catch(error => {
+            return {
+                myItem: itm,
+                error: error
+            };
+        });
+    
+    console.log(stkdata);
+    
+</script>

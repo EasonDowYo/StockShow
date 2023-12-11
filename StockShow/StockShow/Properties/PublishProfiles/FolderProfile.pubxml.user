@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Code\StockShow\StockShow\StockShow\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2023-12-08T13:26:47.9159504Z;True|2023-12-07T23:31:00.9789687+08:00;True|2023-12-07T23:30:57.4369656+08:00;True|2023-12-07T23:29:09.5653292+08:00;True|2023-12-07T23:29:05.5171294+08:00;True|2023-12-07T23:27:29.3425781+08:00;True|2023-12-07T22:53:48.4824316+08:00;True|2023-12-07T22:53:38.9573877+08:00;True|2023-12-07T21:52:29.7206783+08:00;False|2023-12-07T21:52:09.0458345+08:00;False|2023-12-07T21:51:32.6433766+08:00;True|2023-12-07T21:50:38.5445675+08:00;True|2023-12-07T21:46:54.3386327+08:00;True|2023-12-07T21:26:18.9290855+08:00;True|2023-12-05T23:54:04.4028675+08:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

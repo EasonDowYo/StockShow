@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddDbContext<StockShow.Models.Stock_dbContext>(
-    options => options.UseSqlServer("Server=.\\sqlexpress;Database=Stock_db;Trusted_Connection=True;MultipleActiveResultSets=true;"));
+    options => options.UseSqlServer("Server=DESKTOP-FPU2A87\\sqlexpress;Database=Stock_db;Trusted_Connection=True;MultipleActiveResultSets=true;"));
 
 
 
