@@ -193,7 +193,7 @@ namespace StockShow.Controllers
         public async Task<IActionResult> StockNoHandle([Bind("StockNo,StockName,StockType,StockTypeIndex,Note1,Note2,Note3,Note4,Note5,Note6,Note7")] StockNoTable _stockNoTable)
         {
 
-            //_stockNoTable.StockNoName = _stockNoTable.StockNo + " " + _stockNoTable.StockName;
+            _stockNoTable.StockNoName = _stockNoTable.StockNo + " " + _stockNoTable.StockName;
             if (ModelState.IsValid)
             {
                 try

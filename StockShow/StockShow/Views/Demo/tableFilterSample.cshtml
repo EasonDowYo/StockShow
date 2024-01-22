@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "/Views/Shared/myHomeLayout.cshtml";
+    ViewBag.Title = "tablefilter sample";
+}
+<link rel="stylesheet" href="~/lib/tablefilter/style/tablefilter.css" />
+<script src="~/lib/tablefilter/tablefilter.js"></script>
+
+<table id="tbl">
+    <tr>
+        <td>Col1</td>
+        <td>Col2</td>
+    </tr>
+    <tr>
+        <td>Col3</td>
+        <td>Col4</td>
+    </tr>
+</table>
+
+
+<script>
+    var a = new TableFilter("tbl");
+    a.init();
+</script>

@@ -65,6 +65,8 @@ namespace UpdateStockDataConsole.TableModel
         static public void UpdateStockDataToDate(string _stock, DateTime _startDate, DateTime _targetDate)
         {
             Console.WriteLine($@"[UpdateStockDataToDate] Start~ {_stock} !");
+
+            // Get last date from stocNo
             DateTime stockLastUpdateDate = GetTheLastDateFromStock(_stock);
 
 
@@ -98,6 +100,7 @@ namespace UpdateStockDataConsole.TableModel
                     if (stockDataFromAPIModel.Result is null)// The if condition avoid  CS8600
                     {
                         Console.WriteLine(" Call Stock API second times");
+                        System.Threading.Thread.Sleep(9000);
                         stockDataFromAPIModel = StockAPIFunction.GetStockDataFromAPI(_stock, new DateTime(_startDate.Year, _startDate.Month, 1));
                         break;
                     }
@@ -135,18 +138,18 @@ namespace UpdateStockDataConsole.TableModel
                                 var temp_OpenningPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][3]).ToString();
                                 sqlCommand.Parameters.AddWithValue("@OpenningPrice", temp_OpenningPrice);  // = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][3]);
 
-                                // 收盤價
-                                var temp_ClosingPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][4]).ToString();
-                                sqlCommand.Parameters.AddWithValue("@ClosingPrice", temp_ClosingPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][4]);
-
                                 // 最高價
-                                var temp_HighestPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][5]).ToString();
-                                sqlCommand.Parameters.AddWithValue("@HighestPrice", temp_HighestPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][5]);
+                                var temp_ClosingPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][4]).ToString();
+                                sqlCommand.Parameters.AddWithValue("@HighestPrice", temp_ClosingPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][4]);
 
                                 // 最低價
+                                var temp_HighestPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][5]).ToString();
+                                sqlCommand.Parameters.AddWithValue("@LowestPrice", temp_HighestPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][5]);
+
+                                // 收盤價
                                 //var aaa = stockDataFromAPIModel.Result.data[i][6].Replace("X", "");
                                 var temp_LowestPrice = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][6].Replace("X", "")).ToString();
-                                sqlCommand.Parameters.AddWithValue("@LowestPrice", temp_LowestPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][6]);
+                                sqlCommand.Parameters.AddWithValue("@ClosingPrice", temp_LowestPrice);  //= Convert.ToDouble(stockDataFromAPIModel.Result.data[i][6]);
 
                                 // 漲跌價差
                                 var temp_PriceDiff = Convert.ToDouble(stockDataFromAPIModel.Result.data[i][7].Replace("X", "")).ToString();

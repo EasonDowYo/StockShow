@@ -77,6 +77,11 @@ namespace StockShow.Controllers
 
 
 
+        public IActionResult tableFilterSample()
+        {
+            return View();
+        }
+
         public class MyClass
         {
             public int id { get; set; }

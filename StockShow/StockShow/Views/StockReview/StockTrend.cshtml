@@ -1,43 +1,181 @@
-﻿
-@{
+﻿@{
     Layout = "/Views/Shared/myHomeLayout.cshtml";
     ViewBag.Title = "[Stock Trend]";
 }
+<link rel="stylesheet" href="~/lib/tablefilter/style/tablefilter.css" />
+<script type="text/javascript" src="~/lib/tablefilter/tablefilter.js"></script>
+<style>
+    #StockNo_tableID caption {
+        caption-side: top;
+    }
+</style>
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-AAAAAAAAAAAAAAAA
-<script>
+<script type="text/javascript">
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
     
 
+    window.onload = async function(){
+        var stkdata_forplot = [];
+        let result = [];
+        const postObj = {
+            stockNo: "2330",
+            days: 5
+        };
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(postObj) // Object to JSON
 
+        };
+        const response = await fetch("Get5DaysData_Post", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                result = JSON.parse(data);
+            }).catch(error => {
+                return error;
+            });
+        // result 已經是fetch的答案
+        console.log("AAAA");
+        console.log(response);
+        console.log("BBBB");
+        console.log(result);
 
-    const postObj={
-        stockNo:"2330"
-    };
-    const requestOptions={
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify(postObj) // Object to JSON
-
-    };
-    console.log("111111111111111111")
-    //var Day5data;
-    const rawResponse =  fetch('Get5DaysData_Post', requestOptions);
-    //let Day5data = rawResponse.json();
-    var stkdata;
-    console.log("22222222222222222222")
-    rawResponse.then(response => response.json())
-        .then(data => {
-            stkdata=JSON.parse(data);
-        })
-        .catch(error => {
-            return {
-                myItem: itm,
-                error: error
-            };
+        // Create plot data
+        result.forEach(o => {
+            stkdata_forplot.push([o.RecordDate, o.LowestPrice, o.OpenningPrice, o.ClosingPrice, o.HighestPrice]);
         });
+
+
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawStockCandleChart(stkdata_forplot));
+
+        BuildStockNoTable();
+    }
+
     
-    console.log(stkdata);
     
+    function promise(num) {
+        return new Promise((resolve, reject) => {
+            num ? resolve(`${num}, 成功`) : reject('失敗');
+        });
+    }
+    
+    //getStockDataByDays();
+    //promise(1)
+    //    .then(success => {
+    //        console.log(success);
+    //        return promise(2);
+    //    })
+    //    .then(success => {
+    //        console.log(success);
+    //        return promise(0); // 這個階段會進入 catch
+    //    })
+    //    .then(success => {   // 由於上一個階段結果是 reject，所以此段不執行
+    //        console.log(success);
+    //        return promise(3);
+    //    })
+    //    .catch(fail => {
+    //        console.log(fail);
+    //    })
+
+    
+
+    function drawStockCandleChart(plotdata) {
+
+        // Create the data table.
+        //var data = google.visualization.arrayToDataTable([
+        //    ['Mon', 20, 28, 38, 45],
+        //    ['Tue', 31, 38, 55, 66],
+        //    ['Wed', 50, 55, 77, 80],
+        //    ['Thu', 77, 77, 66, 50],
+        //    ['Fri', 68, 66, 22, 15]
+        //    // Treat first row as data as well.
+        //], true);
+        var data = google.visualization.arrayToDataTable(plotdata, true);
+        // Set chart options
+        var options = {
+            legend: 'none',
+            bar: { groupWidth: '100%' }, // Remove space between bars.
+            candlestick: {
+                fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+                risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+            }
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.CandlestickChart(document.getElementById('StockTrend_chartID'));
+        chart.draw(data, options);
+    }
+
+    async function BuildStockNoTable(){
+
+        let result = [];
+        
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        };
+        const response = await fetch("GetStockNoData_Post", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                result = JSON.parse(data);
+            }).catch(error => {
+                return error;
+            });
+
+        BuildTable(result,"StockNo_tableID");
+
+        var tfconfig = {
+            paging: {
+                results_per_page: ["Records: ", [10, 25, 50, 100]],
+            },
+            auto_filter: {
+                delay: 100, //milliseconds
+            },
+            btn_reset: true,
+            extensions: [{ name: "sort" }],
+        };
+        var tf = new TableFilter("StockNo_tableID", tfconfig);
+        tf.init();
+     }
+     function BuildTable(data,target){
+        var table = document.getElementById(target);
+        table.style.border = "3px solid red";
+        var columnNames = Object.keys(data[0]);
+        // Create Rows
+        for (let i = 0; i < data.length; i++) {// i is Row number
+            let row = table.insertRow(i);
+            for (let j = 0; j < columnNames.length; j++) {
+                let cell = row.insertCell(j);// j is Column number
+                cell.innerHTML = data[i][columnNames[j]];
+            }
+        }
+
+        // Create Header
+        var header = table.createTHead();
+        var header_row = header.insertRow(0);
+        for (let i = 0; i < columnNames.length; i++) {
+            let header_cell = header_row.insertCell(i);
+            header_cell.innerHTML = columnNames[i];
+        }
+
+        var td_el = document.querySelectorAll('td');
+        for (var ii = 0; ii < td_el.length; ii++) {
+            td_el[ii].style.border = "1px solid green";
+        }
+    }
+
+
 </script>
+
+Stock Trend
+<div id="StockTrend_chartID" style="width:500px; height:500px;"></div>
+<table id="StockNo_tableID"> </table>

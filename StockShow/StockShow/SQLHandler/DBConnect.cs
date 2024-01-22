@@ -42,7 +42,7 @@ namespace StockShow.SQLHandler
             try
             {
 
-                string UserID = "";
+                //string UserID = "";
                 string Server = "";
                 string Database = "";
                 switch (_selectDB)
