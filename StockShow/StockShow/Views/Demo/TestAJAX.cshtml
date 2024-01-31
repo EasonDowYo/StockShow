@@ -6,33 +6,84 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <h2>Let AJAX change this text</h2>
-    <button type="button" onclick="loadDoc()">Change Content</button>
-    <button type="button" onclick="loadDoc2()">Change Content with input</button>
+    <button type="button" onclick="callAjax1()">Call Ajax 1</button>
+    <button type="button" onclick="callAjax2()">Call Ajax 2</button>
+    <button type="button" onclick="callAjax3()">Call Ajax 3</button>
+    <button type="button" id="jqueryAJAX1">Call Ajax 1-1</button>
+    <button type="button" id="jqueryAJAX2">Call Ajax 1-2</button>
+    <button type="button" id="jqueryAJAX3">Call Ajax 1-3</button>
     <div id="demo">
     </div>
 
     <script>
-        function loadDoc() {
+        function callAjax1() {
             const xhttp = new XMLHttpRequest();
+            
+            xhttp.open("GET", "/Demo/TestAjax1", true);
+            xhttp.send();
             xhttp.onload = function () {
                 document.getElementById("demo").innerHTML = this.responseText;
             }
-            xhttp.open("GET", "/Demo/returnStr", true);
-            xhttp.send();
         }
 
-        function loadDoc2() {
+        function callAjax2() {
             const xhttp = new XMLHttpRequest();
+            
+            xhttp.open("POST", "/Demo/TestAjax2_withValue");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("str1=Henry&int1=33");
             xhttp.onload = function () {
                 document.getElementById("demo").innerHTML = this.responseText;
             }
-            xhttp.open("POST", "/Demo/returnStrByInput");
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("str1=Henry&int1=33");
         }
+
+        function callAjax3() {
+            const xhttp = new XMLHttpRequest();
+            var postObj = {};
+            postObj.name = "William";
+            postObj.id = 25;
+            var jsonData = JSON.stringify(postObj);
+            xhttp.open("POST", "/Demo/TestAjax3_withObj");
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(jsonData);
+            xhttp.onload = function () {
+                document.getElementById("demo").innerHTML = JSON.parse(this.responseText);
+            }
+        }
+
+        $(document).ready(function () {
+            $("#jqueryAJAX1").click(function () {
+                $.post("/Demo/TestAjax1",
+                    {
+                        
+                    },
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+            $("#jqueryAJAX2").click(function () {
+                $.post("/Demo/TestAjax2_withValue",
+                    "str1=Henry&int1=33",
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+            $("#jqueryAJAX3").click(function () {
+                $.post("/Demo/TestAjax3_withObj",
+                    {
+                        name : "William",
+                        id : 25
+                    },
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+        });
+
+
     </script>
 </body>
 

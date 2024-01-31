@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using StockShow.Models;
 using StockShow.STKDataQuery;
@@ -11,7 +12,21 @@ namespace StockShow.Controllers
     {
         public IActionResult StockTrend()
         {
-            
+            var Employees = new List<SelectListItem>{
+                new SelectListItem {Text = "Shyju", Value = "1"},
+                new SelectListItem {Text = "Sean", Value = "2"}
+            };
+
+
+
+            List<SelectListItem> STKType = STKTypeQuery.GetAllSTKType();
+            ViewBag.STKTypeList = STKType;
+
+            List<SelectListItem> STKNoList = STKNoQuery.GetStockNo_BySTKTypeIndex(1);
+            ViewBag.STKNoList = STKNoList;
+
+
+            //ViewBag.Employees = Employees;
             return View();
         }
 
@@ -30,21 +45,6 @@ namespace StockShow.Controllers
 
             return Json(null);
         }
-        [HttpPost]
-        public JsonResult GetStockNoData_Post()
-        {
-            try
-            {
-                StockNoQuery STKNoQuery = new StockNoQuery();
-                DataTable dt = STKNoQuery.GetAllStockNo();
-                string json_output = JsonConvert.SerializeObject(dt);
-
-                return Json(json_output);
-            }
-            catch
-            {
-                return Json(null);
-            }
-        }
+        
     }
 }

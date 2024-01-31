@@ -17,7 +17,8 @@
             <!--   /////  SideBar START  /////    -->
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
-                    <button class="btn sidebar-btn-toggle align-items-center  rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                    <button class="btn sidebar-btn-toggle align-items-center  rounded @(ViewContext.RouteData.Values["controller"].ToString()=="StockReview"?"":"collapsed") " 
+                            data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="@(ViewContext.RouteData.Values["controller"].ToString()=="StockReview"?"true":"false") ">
                         Home
                     </button>
                     <div class="collapse" id="home-collapse">

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-
+using System.Text.Json;
 namespace StockShow.Controllers
 {
     public class DemoController : Controller
@@ -60,21 +60,26 @@ namespace StockShow.Controllers
 
             List<MyClass> myclasses_after = myClasses.Where(o => o.id == Convert.ToInt32(input_json.id) && o.name == input_json.name).ToList();
 
-            string a = JsonConvert.SerializeObject(myclasses_after).ToString();
+            string a =JsonConvert.SerializeObject(myclasses_after).ToString();
             return Content(a);
         }
 
-        public IActionResult returnStr()
+        public IActionResult TestAjax1()
         {
             return Content("ResurnString");
         }
 
-        public IActionResult returnStrByInput(string str1,int int1)
+        public IActionResult TestAjax2_withValue(string str1,int int1)
         {
             string stri = str1 + int1.ToString();
             return Content(stri);
         }
-
+        
+        public IActionResult TestAjax3_withObj( MyClass myClass)
+        {
+            string a = System.Text.Json.JsonSerializer.Serialize(myClass);
+            return Json(a);
+        }
 
 
         public IActionResult tableFilterSample()

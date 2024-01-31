@@ -12,12 +12,37 @@
 <!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+
+@(ViewContext.RouteData.Values["Controller"].ToString())
+@(ViewContext.RouteData.Values["Action"].ToString())
+
+<br/>
+<br />
+<p>Stock Type</p>
+<select  asp-items="@ViewBag.STKTypeList" id="stkType_select" onchange="UpdateStockNoList()">
+    <option>Please select one</option>
+</select>
+<p>Stock Number</p>
+<select asp-items="@ViewBag.STKNoList" id="stkNo_select" onchange="">
+    <option>Please select one</option>
+</select>
+<div id="StockTrend_chartID" style="width:100%; height:600px;"></div>
+<table id="StockNo_tableID"> </table>
+
+
 <script type="text/javascript">
+    var selectElement = document.getElementById("stkType_select");
+
+    selectElement.selectedIndex = 1; 
+    selectElement = document.getElementById("stkNo_select");
+
+    selectElement.selectedIndex = 1;
+
     // Load the Visualization API and the corechart package.
     google.charts.load('current', { 'packages': ['corechart'] });
-    
 
-    window.onload = async function(){
+
+    window.onload = async function () {
         var stkdata_forplot = [];
         let result = [];
         const postObj = {
@@ -58,14 +83,14 @@
         BuildStockNoTable();
     }
 
-    
-    
+
+
     function promise(num) {
         return new Promise((resolve, reject) => {
             num ? resolve(`${num}, 成功`) : reject('失敗');
         });
     }
-    
+
     //getStockDataByDays();
     //promise(1)
     //    .then(success => {
@@ -84,7 +109,7 @@
     //        console.log(fail);
     //    })
 
-    
+
 
     function drawStockCandleChart(plotdata) {
 
@@ -113,10 +138,10 @@
         chart.draw(data, options);
     }
 
-    async function BuildStockNoTable(){
+    async function BuildStockNoTable() {
 
         let result = [];
-        
+
         const requestOptions = {
             method: "POST",
             headers: {
@@ -131,7 +156,7 @@
                 return error;
             });
 
-        BuildTable(result,"StockNo_tableID");
+        BuildTable(result, "StockNo_tableID");
 
         var tfconfig = {
             paging: {
@@ -145,8 +170,8 @@
         };
         var tf = new TableFilter("StockNo_tableID", tfconfig);
         tf.init();
-     }
-     function BuildTable(data,target){
+    }
+    function BuildTable(data, target) {
         var table = document.getElementById(target);
         table.style.border = "3px solid red";
         var columnNames = Object.keys(data[0]);
@@ -175,7 +200,3 @@
 
 
 </script>
-
-Stock Trend
-<div id="StockTrend_chartID" style="width:500px; height:500px;"></div>
-<table id="StockNo_tableID"> </table>
