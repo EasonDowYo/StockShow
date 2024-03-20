@@ -111,9 +111,12 @@ namespace UpdateStockDataConsole.TableModel
                     // Check whether each data needs to be inserted
                     for (int i = 0; i < stockDataFromAPIModel.Result.data.Count; i++)
                     {
-                        DateTime tempdate = Convert.ToDateTime(stockDataFromAPIModel.Result.data[i][0].ToString()); //[i][0]第i天的日期
-                        tempdate = tempdate.AddYears(1911);
-
+                        string tempDateStr = stockDataFromAPIModel.Result.data[i][0].ToString();
+                        string[] strs = tempDateStr.Split('/');
+                        DateTime tempdate = new DateTime(Convert.ToInt16(strs[0]) + 1911, Convert.ToInt16(strs[1]), Convert.ToInt16(strs[2]));
+                        //DateTime tempdate = Convert.ToDateTime(stockDataFromAPIModel.Result.data[i][0].ToString()); //[i][0]第i天的日期
+                        //tempdate = tempdate.AddYears(1911);
+                        //tempdate = new DateTime(tempdate.Year+1911, tempdate.Month, tempdate.Day);
                         // Compare(t1,t2)<0   t1 earlier than t2     Compare(t1,t2)>0   t1 later than t2
                         if (DateTime.Compare(tempdate, stockLastUpdateDate) > 0) // If tempdate later than stockLastUpdateDate
                         {
@@ -172,7 +175,9 @@ namespace UpdateStockDataConsole.TableModel
                         }
                     }  // End -> for (int i = 0; i < stockDataFromAPIModel.Result.data.Count; i++)
                     List<string> this_round_of_data = stockDataFromAPIModel.Result.data.Last();
+
                     System.Threading.Thread.Sleep(9000);
+
                     //stockLastUpdateDate = Convert.ToDateTime(this_round_of_data[0]);
                     _startDate = _startDate.AddMonths(1);
                     //stockLastUpdateDate = stockLastUpdateDate.AddYears(1911);

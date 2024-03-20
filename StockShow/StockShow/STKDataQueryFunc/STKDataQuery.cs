@@ -1,8 +1,8 @@
 ﻿using System.Data;
 
-namespace StockShow.STKDataQuery
+namespace StockShow.STKDataQueryFunc
 {
-    public class StockDataQuery
+    public class STKDataQuery
     {
         public DataTable GetStockNoData(string _stockNo,int days)
         {
@@ -14,7 +14,6 @@ namespace StockShow.STKDataQuery
             using (SQLHandler.DBConnect dbConn = new SQLHandler.DBConnect())
             {
                 dbConn.SelectDB = SQLHandler.DBServer.DatabaseList.StockDB;
-
 
                 dt = dbConn.DoQuery(whole_sql);
             }
@@ -43,7 +42,7 @@ namespace StockShow.STKDataQuery
         public DataTable Get5DaysData(string _stockNo)
         {
             string sqlstr = $@"SELECT * FROM
-(SELECT TOP(5) * FROM Stock_db.dbo.StockDataTable WHERE StockNo='2330' ORDER BY RecordDate DESC) AS A
+(SELECT TOP(119) * FROM Stock_db.dbo.StockDataTable WHERE StockNo='2330' ORDER BY RecordDate DESC) AS A
 
 ORDER BY RecordDate";
             DataTable dt = new DataTable();

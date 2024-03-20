@@ -2,7 +2,7 @@
 using StockShow.Models;
 using System.Data;
 
-namespace StockShow.STKDataQuery
+namespace StockShow.STKDataQueryFunc
 {
     public class STKNoQuery
     {

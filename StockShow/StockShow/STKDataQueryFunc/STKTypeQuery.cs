@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data;
 
-namespace StockShow.STKDataQuery
+namespace StockShow.STKDataQueryFunc
 {
     public class STKTypeQuery
     {

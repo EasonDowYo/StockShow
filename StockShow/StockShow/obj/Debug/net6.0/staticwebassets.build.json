@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IZ7HzWWZiEjyu4DNW7GkPyCCYwP8h6VuyWWgTw2Zr8g=",
+  "Hash": "ctRgQViskKe7oQR/FQjk4K4x8dbxcYTkYnCO5sNy4mQ=",
   "Source": "StockShow",
   "BasePath": "_content/StockShow",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\js\\EasonTable.js",
+      "SourceId": "StockShow",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\",
+      "BasePath": "_content/StockShow",
+      "RelativePath": "js/EasonTable.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\EasonTable.js"
     },
     {
       "Identity": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\js\\site.js",

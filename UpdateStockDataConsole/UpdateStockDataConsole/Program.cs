@@ -7,27 +7,34 @@ using System.Data;
 using UpdateStockDataConsole.TableModel;
 
 Console.WriteLine("Hello, World!");
-
-DataTable StockNoList = StockNoTableModelFunc.GetStockNoList();
-//string url = $@"http://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20160501&stockNo=2330";
-if (StockNoList.Rows.Count <= 0)
+try
 {
-    Console.WriteLine("Query Fail [StockNolist]");
-    return;
-}
-DateTime n = DateTime.Now;
-DateTime EndTime = new DateTime(n.Year, n.Month, n.Day, 00, 00, 00);
-DateTime StartDate = new DateTime(2020, 1, 1, 0, 0, 0);
+    DataTable StockNoList = StockNoTableModelFunc.GetStockNoList();
+    //string url = $@"http://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20160501&stockNo=2330";
+    if (StockNoList.Rows.Count <= 0)
+    {
+        Console.WriteLine("Query Fail [StockNolist]");
+        return;
+    }
+    DateTime n = DateTime.Now;
+    DateTime EndTime = new DateTime(n.Year, n.Month, n.Day, 00, 00, 00);
+    DateTime StartDate = new DateTime(2020, 1, 1, 0, 0, 0);
 
-foreach (DataRow row in StockNoList.AsEnumerable())
+    foreach (DataRow row in StockNoList.AsEnumerable())
+    {
+        //#pragma warning disable CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
+        string StockNo = row.Field<string>("StockNo");
+        //#pragma warning restore CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
+
+        StockDataTableModelFunc.UpdateStockDataToDate(StockNo, StartDate, EndTime);
+
+    }
+}
+catch(Exception e)
 {
-//#pragma warning disable CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
-    string StockNo = row.Field<string>("StockNo");
-    //#pragma warning restore CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
-
-    StockDataTableModelFunc.UpdateStockDataToDate(StockNo, StartDate, EndTime);
-
+    Console.WriteLine(e.ToString());
 }
+
 
 
 

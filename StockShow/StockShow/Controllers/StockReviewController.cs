@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using StockShow.Models;
-using StockShow.STKDataQuery;
+using StockShow.STKDataQueryFunc;
 using System.Data;
 using static StockShow.Controllers.DemoController;
 
@@ -36,7 +36,7 @@ namespace StockShow.Controllers
 
             if (input_json.StockNo != null)
             {
-                StockDataQuery STKDataQuery = new StockDataQuery();
+                STKDataQuery STKDataQuery = new STKDataQuery();
                 DataTable dt = STKDataQuery.Get5DaysData(input_json.StockNo);
                 string json_output = JsonConvert.SerializeObject(dt);
 

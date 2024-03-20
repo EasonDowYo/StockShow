@@ -87,6 +87,11 @@ namespace StockShow.Controllers
             return View();
         }
 
+
+        public IActionResult MyModalTest()
+        {
+            return View();
+        }
         public class MyClass
         {
             public int id { get; set; }

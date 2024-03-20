@@ -1,41 +1,60 @@
-﻿@{
+﻿
+
+@{
     Layout = "/Views/Shared/myHomeLayout.cshtml";
     ViewBag.Title = "[Stock Trend]";
 }
 <link rel="stylesheet" href="~/lib/tablefilter/style/tablefilter.css" />
 <script type="text/javascript" src="~/lib/tablefilter/tablefilter.js"></script>
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <style>
     #StockNo_tableID caption {
         caption-side: top;
     }
 </style>
-<!--Load the AJAX API-->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-@(ViewContext.RouteData.Values["Controller"].ToString())
+
+@*@(ViewContext.RouteData.Values["Controller"].ToString())
 @(ViewContext.RouteData.Values["Action"].ToString())
+*@
+@*<div style="width:500px; height:100px; background-color:red"></div>*@
 
-<br/>
-<br />
-<p>Stock Type</p>
-<select  asp-items="@ViewBag.STKTypeList" id="stkType_select" onchange="UpdateStockNoList()">
-    <option>Please select one</option>
-</select>
-<p>Stock Number</p>
-<select asp-items="@ViewBag.STKNoList" id="stkNo_select" onchange="">
-    <option>Please select one</option>
-</select>
-<div id="StockTrend_chartID" style="width:100%; height:600px;"></div>
-<table id="StockNo_tableID"> </table>
 
+<div class="d-flex flex-row">
+
+    <!-- Stock Type dropdown list -->
+    <p class="p-2">Stock Type</p>
+    <select asp-items="@ViewBag.STKTypeList" id="stkType_select" onchange="UpdateSelectStockNoChange()">
+        <option>Please select one</option>
+    </select>
+    <!-- Stock Number dropdown list -->
+    <p class ="p-2">Stock Number</p>
+    <select asp-items="@ViewBag.STKNoList" id="stkNo_select" onchange="">
+        <option>Please select one</option>
+    </select>
+
+    <p class="p-2">Days</p>
+    <select id="StockNoDays_select">
+        <option value="15" selected>15</option>
+        <option value="30">30</option>
+        <option value="60">60</option>
+        <option value="120">120</option>
+        <option value="240">240</option>
+    </select>
+    <button onclick="PlotStockDataChart()">PLOT</button>
+</div>
+    
+    <div id="StockTrend_chartID"></div>
+
+    <table id="StockNo_tableID"> </table>
 
 <script type="text/javascript">
-    var selectElement = document.getElementById("stkType_select");
-
-    selectElement.selectedIndex = 1; 
+    // ================= INITIALIZE ==================
+    let selectElement = document.getElementById("stkType_select");
+    selectElement.selectedIndex = 1;
     selectElement = document.getElementById("stkNo_select");
-
     selectElement.selectedIndex = 1;
 
     // Load the Visualization API and the corechart package.
@@ -43,7 +62,7 @@
 
 
     window.onload = async function () {
-        var stkdata_forplot = [];
+        let stkdata_forplot = [];
         let result = [];
         const postObj = {
             stockNo: "2330",
@@ -65,7 +84,7 @@
                 return error;
             });
         // result 已經是fetch的答案
-        console.log("AAAA");
+        console.log("Fetch response");
         console.log(response);
         console.log("BBBB");
         console.log(result);
@@ -80,35 +99,8 @@
         // Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawStockCandleChart(stkdata_forplot));
 
-        BuildStockNoTable();
+        //BuildStockNoTable();
     }
-
-
-
-    function promise(num) {
-        return new Promise((resolve, reject) => {
-            num ? resolve(`${num}, 成功`) : reject('失敗');
-        });
-    }
-
-    //getStockDataByDays();
-    //promise(1)
-    //    .then(success => {
-    //        console.log(success);
-    //        return promise(2);
-    //    })
-    //    .then(success => {
-    //        console.log(success);
-    //        return promise(0); // 這個階段會進入 catch
-    //    })
-    //    .then(success => {   // 由於上一個階段結果是 reject，所以此段不執行
-    //        console.log(success);
-    //        return promise(3);
-    //    })
-    //    .catch(fail => {
-    //        console.log(fail);
-    //    })
-
 
 
     function drawStockCandleChart(plotdata) {
@@ -126,6 +118,7 @@
         // Set chart options
         var options = {
             legend: 'none',
+            height:600,
             bar: { groupWidth: '100%' }, // Remove space between bars.
             candlestick: {
                 fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
@@ -158,7 +151,7 @@
 
         BuildTable(result, "StockNo_tableID");
 
-        var tfconfig = {
+        let tfconfig = {
             paging: {
                 results_per_page: ["Records: ", [10, 25, 50, 100]],
             },
@@ -168,13 +161,14 @@
             btn_reset: true,
             extensions: [{ name: "sort" }],
         };
-        var tf = new TableFilter("StockNo_tableID", tfconfig);
+        let tf = new TableFilter("StockNo_tableID", tfconfig);
         tf.init();
     }
+
     function BuildTable(data, target) {
-        var table = document.getElementById(target);
+        let table = document.getElementById(target);
         table.style.border = "3px solid red";
-        var columnNames = Object.keys(data[0]);
+        let columnNames = Object.keys(data[0]);
         // Create Rows
         for (let i = 0; i < data.length; i++) {// i is Row number
             let row = table.insertRow(i);
@@ -185,17 +179,93 @@
         }
 
         // Create Header
-        var header = table.createTHead();
-        var header_row = header.insertRow(0);
+        let header = table.createTHead();
+        let header_row = header.insertRow(0);
         for (let i = 0; i < columnNames.length; i++) {
             let header_cell = header_row.insertCell(i);
             header_cell.innerHTML = columnNames[i];
         }
 
-        var td_el = document.querySelectorAll('td');
-        for (var ii = 0; ii < td_el.length; ii++) {
+        let td_el = document.querySelectorAll('td');
+        for (let ii = 0; ii < td_el.length; ii++) {
             td_el[ii].style.border = "1px solid green";
         }
+    }
+
+    async function UpdateSelectStockNoChange() {
+        let result = [];
+        let stkTypeSelect = document.getElementById("stkType_select");
+        let value = stkTypeSelect.value;
+        let text = stkTypeSelect.options[stkTypeSelect.selectedIndex].text;
+
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            //body: JSON.stringify(postObj) // Object to JSON
+
+        };
+        const response = await fetch("/StockNoTables/GetStockNo_byStockTypeIndex?stockTypeIndex=" + value, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                result = JSON.parse(data);
+            }).catch(error => {
+                return error;
+            });
+
+        // result 已經是fetch的答案
+        console.log("UpdateSelectStockNoChange Fetch result");
+        console.log(response);
+        console.log("UpdateSelectStockNoChange result");
+        console.log(result);
+        let select = document.getElementById("stkNo_select");
+        select.options.length = 0;
+        result.forEach(o => {
+            let option = document.createElement("option");
+            option.text = o.Text;
+            option.value = o.Value;
+            select.add(option);
+        })
+
+    }
+
+    async function PlotStockDataChart() {
+        let result = [];
+        let stkdata_forplot = [];
+        let stkNoSelect = document.getElementById("stkNo_select");
+        let stockNO = stkNoSelect.value;
+        let daySelect = document.getElementById("StockNoDays_select");
+        let days = daySelect.value;
+
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            //body: JSON.stringify(postObj) // Object to JSON
+        };
+        const response = await fetch("/StockDataTable/GetStockData_ByStockNo?StockNo=" + stockNO + "&days=" + days, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                result = JSON.parse(data);
+            }).catch(error => {
+                return error;
+            });
+
+        // result 已經是fetch的答案
+        console.log("PlotStockDataChart Fetch result");
+        console.log(response);
+        console.log("PlotStockDataChart result");
+        console.log(result);
+        
+        // Create plot data
+        result.forEach(o => {
+            stkdata_forplot.push([o.RecordDate, o.LowestPrice, o.OpenningPrice, o.ClosingPrice, o.HighestPrice]);
+        });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawStockCandleChart(stkdata_forplot));
     }
 
 

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using StockShow.Models;
+using StockShow.STKDataQueryFunc;
 
 namespace StockShow.Controllers
 {
@@ -207,12 +210,40 @@ namespace StockShow.Controllers
                     return NotFound();
                 }
             }
+
             List<StockNoTable> stockNo_List = _context.StockNoTables.ToList();
             ViewBag.StockNoList = stockNo_List; // 使用ViewBag傳遞資料
             // StockType Select Items
             ViewBag.StockTypeIndex = new SelectList(_context.StockTypeTables, "StockTypeIndex", "StockType"); // SelectList(資料表 ,選項的Value ,選項的Text)
 
             return View("StockNoHandle");
+        }
+
+
+
+        /// <summary>
+        /// 取得StockTypeIndex的StockNo
+        /// </summary>
+        /// <param name="stockTypeIndex"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<JsonResult> GetStockNo_byStockTypeIndex(int stockTypeIndex)
+        {
+            if (stockTypeIndex > 0)
+            {
+                List<SelectListItem> stockNoList = STKNoQuery.GetStockNo_BySTKTypeIndex(stockTypeIndex);
+                string json_output = JsonConvert.SerializeObject(stockNoList);
+
+                return Json(json_output);
+            }
+            return Json(null);
+        }
+
+        [Route("Home/Index")]
+        public IActionResult PageNotFound()
+        {
+            // 在這裡可以進行一些額外的處理，例如記錄錯誤等
+            return View(); // 或者使用其他方式導向主畫面
         }
 
     }

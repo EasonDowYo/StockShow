@@ -1,11 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-
-@model StockShow.Models.StockNoTable
+﻿@model StockShow.Models.StockNoTable
 
 @{
     Layout = "/Views/Shared/myHomeLayout.cshtml";
@@ -13,6 +6,8 @@
 }
 <link rel="stylesheet" href="~/lib/tablefilter/style/tablefilter.css" />
 <script type="text/javascript" src="~/lib/tablefilter/tablefilter.js"></script>
+<script type="text/javascript" src="~/js/EasonTable.js"></script>
+
 <script>
     function AutoUpdateStockType() {
         //alert("Auto Get StockType by select StockTypeIndex !~");
@@ -22,10 +17,11 @@
         var x = document.getElementById("StockTypeIndex").textContent;
         document.getElementById("StockType").value = selectedOption.text;
     }
-    
+
     var arrayOfArrays = @Html.Raw(Json.Serialize(ViewBag.StockNoList));
 
 </script>
+
 
 <!--  //// Form input div ////  -->
 <div class="row">
@@ -37,7 +33,7 @@
             <div class="row">
                 <div class="col">
                     <label asp-for="StockNo" class="control-label"></label>
-                    <input asp-for="StockNo" class="form-control form-control-lg"/>
+                    <input asp-for="StockNo" class="form-control form-control-lg" />
                     <span asp-validation-for="StockNo" class="text-danger"></span>
                 </div>
                 <div class="col">
@@ -56,11 +52,11 @@
                     <select asp-for="StockTypeIndex" class="form-control" onchange="AutoUpdateStockType()" asp-items="ViewBag.StockTypeIndex"></select>
                 </div>
                 <div class="col">
-                        <label asp-for="StockType" class="control-label"></label>
-                        <input asp-for="StockType" class="form-control" readonly="@(true)" />
-                        <span asp-validation-for="StockType" class="text-danger"></span>
+                    <label asp-for="StockType" class="control-label"></label>
+                    <input asp-for="StockType" class="form-control" readonly="@(true)" />
+                    <span asp-validation-for="StockType" class="text-danger"></span>
                 </div>
-                
+
                 <div class="d-flex align-items-center p-2 gap-3">
                     <div>
                         <label asp-for="Note1" class="control-label"></label>
@@ -99,12 +95,10 @@
                         <input asp-for="Note7" class="form-control form-control-sm" />
                         <span asp-validation-for="Note7" class="text-danger"></span>
                     </div>
-
-
                 </div>
 
             </div>
-            
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -112,68 +106,160 @@
     </div>
 </div>
 
-<table id="StockNo_tableID"> 
-
-
+<table id="StockNo_tableID">
 </table>
 
-<script>
-    
-    function BuildTableWithFirstButton(data, target) {
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
 
-        var table = document.getElementById(target);
-        table.style.border = "3px solid red";
-        var columnNames = Object.keys(data[0]);
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Stock Number Edit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <label for="StockNo" class="control-label"></label>
+                            <input for="StockNo" class="form-control form-control-lg" />
+                        </div>
+                        <div class="col">
+                            <label for="StockName" class="control-label"></label>
+                            <input for="StockName" class="form-control form-control-lg" />
 
-        // Create Rows
-        for (let i = 0; i < data.length; i++) {// i is Row number
-            let row = table.insertRow(i);
-            for (let j = 0; j < columnNames.length+1; j++) {
+                        </div>
+                        <div class="col">
+                            <label for="StockNoName" class="control-label"></label>
+                            <input for="StockNoName" value="GG" class="form-control form-control-lg" readonly="@(true)" />
+                        </div>
+                        <div class="col">
+                            <label for="StockTypeIndex" class="control-label"></label>
+                            <select for="StockTypeIndex" class="form-control" onchange="AutoUpdateStockType()" asp-items="ViewBag.StockTypeIndex"></select>
+                        </div>
+                        <div class="col">
+                            <label for="StockType" class="control-label"></label>
+                            <input for="StockType" class="form-control" readonly="@(true)" />
+                        </div>
 
-                if(j==0){
-                    let cell = row.insertCell();
-                    var btn = document.createElement('input');
-                    btn.type = "button";
-                    btn.className = "btn";
-                    btn.value = "Edit";
-                    btn.onclick = function () { console.log("AAAA"); };
-                    cell.appendChild(btn);
+                        <div class="d-flex align-items-center p-2 gap-3">
+                            <div>
+                                <label for="Note1" class="control-label"></label>
+                                <input for="Note1" class="form-control  form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Note2" class="control-label"></label>
+                                <input for="Note2" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Note3" class="control-label"></label>
+                                <input for="Note3" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Note4" class="control-label"></label>
+                                <input for="Note4" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center p-2 gap-3">
+                            <div class="form-group">
+                                <label for="Note5" class="control-label"></label>
+                                <input for="Note5" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Note6" class="control-label"></label>
+                                <input for="Note6" class="form-control form-control-sm" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Note7" class="control-label"></label>
+                                <input for="Note7" class="form-control form-control-sm" />
+                            </div>
+                        </div>
 
-                    var btn2 = document.createElement('input');
-                    btn2.type = "button";
-                    btn2.className = "btn";
-                    btn2.value = "Delete";
-                    btn2.onclick = function () { console.log("Delete"); };
-                    cell.appendChild(btn2);
+                    </div>
 
-                }else{
-                    let cell = row.insertCell(j);// j is Column number
-                    cell.innerHTML = data[i][columnNames[j]];
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function BuildTableWithFirstButton(data, target) {
+
+            var table = document.getElementById(target);
+            table.style.border = "3px solid red";
+            var columnNames = Object.keys(data[0]);
+
+            // Create Rows
+            for (let i = 0; i < data.length; i++) {// i is Row number
+                let row = table.insertRow(i);
+                for (let j = 0; j < columnNames.length + 1; j++) {
+
+                    if (j == 0) {
+                        let cell = row.insertCell();
+                        let btn = document.createElement('input');
+                        btn.type = "button";
+                        btn.className = "m-2 btn btn-primary";
+                        btn.value = "Edit";
+                        btn.onclick = function () { console.log("Edit"); };
+                        btn.setAttribute('data-bs-toggle', 'modal');
+                        btn.setAttribute('data-bs-target', '#exampleModal');
+                        cell.appendChild(btn);
+
+                        let btn2 = document.createElement('input');
+                        btn2.type = "button";
+                        btn2.className = "m-2 btn btn-primary";
+                        btn2.value = "Delete";
+                        btn2.onclick = function () { console.log("Delete"); };
+                        cell.appendChild(btn2);
+
+                    } else {
+                        let cell = row.insertCell(j);// j is Column number
+                        cell.innerHTML = data[i][columnNames[j]];
+                    }
+
+
                 }
+            }
 
+            // Create Header
+            var header = table.createTHead();
+            var header_row = header.insertRow(0);
+            for (let i = 0; i < columnNames.length; i++) {
+                let header_cell = header_row.insertCell(i);
+                header_cell.innerHTML = columnNames[i];
+            }
+
+            var td_el = document.querySelectorAll('td');
+            for (var ii = 0; ii < td_el.length; ii++) {
+                td_el[ii].style.padding = "3px";
+                td_el[ii].style.border = "1px solid gray";
 
             }
         }
 
-        // Create Header
-        var header = table.createTHead();
-        var header_row = header.insertRow(0);
-        for (let i = 0; i < columnNames.length; i++) {
-            let header_cell = header_row.insertCell(i);
-            header_cell.innerHTML = columnNames[i];
-        }
 
-        var td_el = document.querySelectorAll('td');
-        for (var ii = 0; ii < td_el.length; ii++) {
-            td_el[ii].style.padding = "3px";
-            td_el[ii].style.border = "1px solid gray";
 
-        }
-    }
+        //
+        // BuildTableWithFirstButton(arrayOfArrays, "StockNo_tableID");
 
-    
 
-    BuildTableWithFirstButton(arrayOfArrays, "StockNo_tableID");
-    
+        let estbl = new EasonTable();
 
-</script>
+        estbl.CreateTable(arrayOfArrays, "StockNo_tableID");
+
+
+    </script>
