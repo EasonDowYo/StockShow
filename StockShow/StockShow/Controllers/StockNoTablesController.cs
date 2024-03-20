@@ -218,7 +218,33 @@ namespace StockShow.Controllers
 
             return View("StockNoHandle");
         }
-
+        [HttpPost]
+        
+        public async Task<bool> Handle_Edit(StockNoTable stockNoTable)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(stockNoTable);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!StockNoTableExists(stockNoTable.StockNo))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
 
 
         /// <summary>
