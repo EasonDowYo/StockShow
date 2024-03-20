@@ -18,7 +18,10 @@ namespace StockShow.Controllers
             return View("Index");//切換到Index的內容
         }
 
-
+        public IActionResult test()
+        {
+            return View();
+        }
         public IActionResult TestAJAX()
         {
             return View();
