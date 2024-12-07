@@ -1,0 +1,456 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Code\\StockShow\\StockShow\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocktypetable\\stocktypehandle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocktypetable\\stocktypehandle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocknotables\\stocknohandle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocknotables\\stocknohandle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\wwwroot\\js\\easontable.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\wwwroot\\js\\easontable.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\controllers\\stocktypetablecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\controllers\\stocktypetablecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\stkdataqueryfunc\\stkdataquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\stkdataqueryfunc\\stkdataquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\demo\\mymodaltest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\demo\\mymodaltest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\shared\\mysharehomepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\shared\\mysharehomepage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\wwwroot\\css\\sidebar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\wwwroot\\css\\sidebar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\sqlhandler\\dbconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\sqlhandler\\dbconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocktypetable\\addstocktype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocktypetable\\addstocktype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\stkdataqueryfunc\\stknoquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\stkdataqueryfunc\\stknoquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\stkdataqueryfunc\\stktypequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\stkdataqueryfunc\\stktypequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\models\\stockdataquerymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\models\\stockdataquerymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\sqlhandler\\dbserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\sqlhandler\\dbserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocktypetable\\deletestocktype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocktypetable\\deletestocktype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\demo\\testajax.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\demo\\testajax.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\demo\\tablefiltersample.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\demo\\tablefiltersample.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocknotables\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocknotables\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocknotables\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocknotables\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocktypetable\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocktypetable\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocktypetable\\editstocktype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocktypetable\\editstocktype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\stocktypetable\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\stocktypetable\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|d:\\code\\stockshow\\stockshow\\stockshow\\views\\demo\\test.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A6524850-2666-4587-BB66-896EAA861611}|StockShow\\StockShow.csproj|solutionrelative:stockshow\\views\\demo\\test.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StockNoHandle.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockNoTables\\StockNoHandle.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockNoTables\\StockNoHandle.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockNoTables\\StockNoHandle.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockNoTables\\StockNoHandle.cshtml",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAlwAMBAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T07:58:59.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StockTypeHandle.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml*",
+              "RelativeToolTip": "StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml*",
+              "ViewState": "AgIAAIQAAAAAAAAAAADwv5UAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T07:48:22.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StockTypeTableController.cs",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Controllers\\StockTypeTableController.cs",
+              "RelativeDocumentMoniker": "StockShow\\Controllers\\StockTypeTableController.cs",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Controllers\\StockTypeTableController.cs",
+              "RelativeToolTip": "StockShow\\Controllers\\StockTypeTableController.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAhwB4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-11T13:43:45.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EasonTable.js",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\js\\EasonTable.js",
+              "RelativeDocumentMoniker": "StockShow\\wwwroot\\js\\EasonTable.js",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\js\\EasonTable.js",
+              "RelativeToolTip": "StockShow\\wwwroot\\js\\EasonTable.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-03-31T07:35:42.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "STKDataQuery.cs",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\STKDataQueryFunc\\STKDataQuery.cs",
+              "RelativeDocumentMoniker": "StockShow\\STKDataQueryFunc\\STKDataQuery.cs",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\STKDataQueryFunc\\STKDataQuery.cs",
+              "RelativeToolTip": "StockShow\\STKDataQueryFunc\\STKDataQuery.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAvwCwAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-11T12:30:40.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "test.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Demo\\test.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\Demo\\test.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Demo\\test.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\Demo\\test.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-31T07:35:42.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MyModalTest.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Demo\\MyModalTest.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\Demo\\MyModalTest.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Demo\\MyModalTest.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\Demo\\MyModalTest.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAQwAkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-02-22T13:51:28.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "site.js",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "StockShow\\wwwroot\\js\\site.js",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "StockShow\\wwwroot\\js\\site.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAABrAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-03-17T07:42:18.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SideBar.css",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\css\\SideBar.css",
+              "RelativeDocumentMoniker": "StockShow\\wwwroot\\css\\SideBar.css",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\wwwroot\\css\\SideBar.css",
+              "RelativeToolTip": "StockShow\\wwwroot\\css\\SideBar.css",
+              "ViewState": "AQIAAAYAAAAAAAAAAAApwBQAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2023-08-27T05:55:26.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "myShareHomePage.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Shared\\myShareHomePage.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\Shared\\myShareHomePage.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Shared\\myShareHomePage.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\Shared\\myShareHomePage.cshtml",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAkwDUAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-08-24T04:09:37.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-10-18T14:03:37.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AddStockType.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\AddStockType.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockTypeTable\\AddStockType.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\AddStockType.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockTypeTable\\AddStockType.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAnwBYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-08-24T04:09:37.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DBConnect.cs",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\SQLHandler\\DBConnect.cs",
+              "RelativeDocumentMoniker": "StockShow\\SQLHandler\\DBConnect.cs",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\SQLHandler\\DBConnect.cs",
+              "RelativeToolTip": "StockShow\\SQLHandler\\DBConnect.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAABkwC0AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-09-05T14:23:31.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "STKTypeQuery.cs",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\STKDataQueryFunc\\STKTypeQuery.cs",
+              "RelativeDocumentMoniker": "StockShow\\STKDataQueryFunc\\STKTypeQuery.cs",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\STKDataQueryFunc\\STKTypeQuery.cs",
+              "RelativeToolTip": "StockShow\\STKDataQueryFunc\\STKTypeQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-31T14:22:09.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "STKNoQuery.cs",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\STKDataQueryFunc\\STKNoQuery.cs",
+              "RelativeDocumentMoniker": "StockShow\\STKDataQueryFunc\\STKNoQuery.cs",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\STKDataQueryFunc\\STKNoQuery.cs",
+              "RelativeToolTip": "StockShow\\STKDataQueryFunc\\STKNoQuery.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAABowAQAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-01-22T14:39:36.596Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "StockDataQueryModel.cs",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Models\\StockDataQueryModel.cs",
+              "RelativeDocumentMoniker": "StockShow\\Models\\StockDataQueryModel.cs",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Models\\StockDataQueryModel.cs",
+              "RelativeToolTip": "StockShow\\Models\\StockDataQueryModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-14T14:34:58.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DBServer.cs",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\SQLHandler\\DBServer.cs",
+              "RelativeDocumentMoniker": "StockShow\\SQLHandler\\DBServer.cs",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\SQLHandler\\DBServer.cs",
+              "RelativeToolTip": "StockShow\\SQLHandler\\DBServer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-09-05T14:20:27.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DeleteStockType.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\DeleteStockType.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockTypeTable\\DeleteStockType.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\DeleteStockType.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockTypeTable\\DeleteStockType.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAB4wBgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-08-31T15:31:04.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TestAJAX.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Demo\\TestAJAX.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\Demo\\TestAJAX.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Demo\\TestAJAX.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\Demo\\TestAJAX.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwvwgAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-08-28T16:05:51.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "tableFilterSample.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Demo\\tableFilterSample.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\Demo\\tableFilterSample.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Demo\\tableFilterSample.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\Demo\\tableFilterSample.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-01-18T13:15:06.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockNoTables\\Create.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockNoTables\\Create.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockNoTables\\Create.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockNoTables\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGYAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-11-21T15:09:33.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockNoTables\\Delete.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockNoTables\\Delete.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockNoTables\\Delete.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockNoTables\\Delete.cshtml",
+              "ViewState": "AQIAAA4AAAAAAAAAAABYwBMAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-08-31T15:32:39.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\appsettings.json",
+              "RelativeDocumentMoniker": "StockShow\\appsettings.json",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\appsettings.json",
+              "RelativeToolTip": "StockShow\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2023-12-07T15:24:42.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-12-07T13:53:41.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\Index.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockTypeTable\\Index.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\Index.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockTypeTable\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-08-31T16:24:57.709Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "EditStockType.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\EditStockType.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockTypeTable\\EditStockType.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\EditStockType.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockTypeTable\\EditStockType.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAABowAMAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-08-24T09:42:02.344Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "List.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\List.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockTypeTable\\List.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\List.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockTypeTable\\List.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2023-08-24T12:05:11.711Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -26,7 +26,7 @@ try
         string StockNo = row.Field<string>("StockNo");
         //#pragma warning restore CS8600 // 正在將 Null 常值或可能的 Null 值轉換為不可為 Null 的型別。
 
-        StockDataTableModelFunc.UpdateStockDataToDate(StockNo, StartDate, EndTime);
+         StockDataTableModelFunc.UpdateStockDataToDate(StockNo, StartDate, EndTime);
 
     }
 }

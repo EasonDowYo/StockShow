@@ -46,6 +46,7 @@
 
         @foreach (var a in ViewBag.StockTypeList)
         {
+            
             <tr>
                 <td>@a.StockTypeIndex</td>
                 <td>@a.StockType</td>
@@ -103,8 +104,13 @@
     <table id="myTable">
     </table>
 
+    <!--  Stock Type Table2 using Viewbag & JS -->
+    <table id="myTable2">
+    </table>
+
     <div>@Html.Raw(Json.Serialize(ViewBag.StockTypeList))</div>
 
+    <script type="text/javascript" src="~/js/EasonTable.js"></script>
 
     <script>
 
@@ -140,6 +146,10 @@
             td_el[ii].style.border = "1px solid brown";
         }
 
+        let estbl = new EasonTable();
+        estbl.CreateTable(arrayOfArrays,"myTable2")
+
+
 
         function EditValueInsert(_stockTypeIndex,_stockType){
             console.log(_stockType);
@@ -153,6 +163,10 @@
 
 
         }
+
+
+
+
         function EditValuePost() {
 
 

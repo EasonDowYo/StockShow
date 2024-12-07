@@ -7,6 +7,12 @@
 <link rel="stylesheet" href="~/lib/tablefilter/style/tablefilter.css" />
 <script type="text/javascript" src="~/lib/tablefilter/tablefilter.js"></script>
 <script type="text/javascript" src="~/js/EasonTable.js"></script>
+<style>
+    .modalWidth {
+        width: 1000px;
+        margin: auto;
+    }
+</style>
 
 <script>
     function AutoUpdateStockType() {
@@ -14,7 +20,6 @@
         var dropdownList = document.getElementById('StockTypeIndex');
         var selecetedIndex = dropdownList.selectedIndex;
         var selectedOption = dropdownList.options[selecetedIndex];
-        var x = document.getElementById("StockTypeIndex").textContent;
         document.getElementById("StockType").value = selectedOption.text;
     }
     function AutoUpdateStockType_edit() {
@@ -22,7 +27,6 @@
         var dropdownList = document.getElementById('StockTypeIndex_edit');
         var selecetedIndex = dropdownList.selectedIndex;
         var selectedOption = dropdownList.options[selecetedIndex];
-        var x = document.getElementById("StockTypeIndex").textContent;
         document.getElementById("StockType_edit").value = selectedOption.text;
     }
 
@@ -125,12 +129,12 @@
 
 <!-- ////////////// MODAL START ////////////// ////////////// MODAL START ////////////// ////////////// MODAL START ////////////// ////////////// MODAL START ////////////// -->
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content modalWidth">
+            <div class="modal-header ">
                 <h5 class="modal-title" id="exampleModalLabel">Stock Number Edit</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
             </div>
             <div class="modal-body">
                 
@@ -152,7 +156,7 @@
                             </div>
                             <div class="col">
                                 <label for="StockTypeIndex_edit" class="control-label">StockTypeIndex</label>
-                                <select id="StockTypeIndex_edit" class="form-control" onchange="AutoUpdateStockType()" asp-items="ViewBag.StockTypeIndex"></select>
+                            <select id="StockTypeIndex_edit" class="form-control" onchange="AutoUpdateStockType_edit()" asp-items="ViewBag.StockTypeIndex"></select>
                             </div>
                             <div class="col">
                                 <label for="StockType_edit" class="control-label">StockType</label>
@@ -194,70 +198,70 @@
 
                         </div>
 
-                        <div class="form-group">
-                        <input type="submit" value="Edit" class="btn btn-primary" onclick="EditFetch()" />
-                        </div>
 
                     </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="EditFetch()">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- ////////////// MODAL END ////////////// ////////////// MODAL END ////////////// ////////////// MODAL END ////////////// ////////////// MODAL END ////////////// -->
+</div>
+
+<script type="text/javascript">
+
+    async function EditFetch() {
+
+        const postObj = {};
+        postObj.StockNo = document.getElementById('StockNo_edit').value;
+        postObj.StockName = document.getElementById('StockName_edit').value;
+        postObj.StockNoName = document.getElementById('StockNoName_edit').value;
+        postObj.StockTypeIndex = document.getElementById('StockTypeIndex_edit').value;
+        postObj.StockType = document.getElementById('StockType_edit').value;
+        postObj.Note1 = document.getElementById('Note1_edit').value;
+        postObj.Note2 = document.getElementById('Note2_edit').value;
+        postObj.Note3 = document.getElementById('Note3_edit').value;
+        postObj.Note4 = document.getElementById('Note4_edit').value;
+        postObj.Note5 = document.getElementById('Note5_edit').value;
+        postObj.Note6 = document.getElementById('Note6_edit').value;
+        postObj.Note7 = document.getElementById('Note7_edit').value;
+        console.log(postObj);
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(postObj) // Object to JSON
+        };
+
+        var stkdata;
+        const rawResponse = await fetch('Handle_Edit', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                stkdata = JSON.parse(data);
+            })
+            .catch(error => {
+                return {
+                    error: error
+                };
+            });
+
+        console.log(stkdata);
+    }
 
 
-    <script type="text/javascript">
-
-        async function EditFetch(){
-
-            const postObj = {};
-            postObj.StockNo = document.getElementById('StockNo_edit').value;
-            postObj.StockName = document.getElementById('StockName_edit').value;
-            postObj.StockNoName = document.getElementById('StockNoName_edit').value;
-            postObj.StockTypeIndex = document.getElementById('StockTypeIndex_edit').value;
-            postObj.Note1 = document.getElementById('Note1_edit').value;
-            postObj.Note2 = document.getElementById('Note2_edit').value;
-            postObj.Note3 = document.getElementById('Note3_edit').value;
-            postObj.Note4 = document.getElementById('Note4_edit').value;
-            postObj.Note5 = document.getElementById('Note5_edit').value;
-            postObj.Note6 = document.getElementById('Note6_edit').value;
-            postObj.Note7 = document.getElementById('Note7_edit').value;
-            console.log(postObj);
-            const requestOptions = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(postObj) // Object to JSON
-            };
-
-            var stkdata;
-            const rawResponse = await fetch('Handle_Edit', requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    stkdata = JSON.parse(data);
-                })
-                .catch(error => {
-                    return {
-                        error: error
-                    };
-                });
+    //
+    // BuildTableWithFirstButton(arrayOfArrays, "StockNo_tableID");
 
 
-        }
+    let estbl = new EasonTable();
+
+    estbl.BuildTableWithTwoButton(arrayOfArrays, "StockNo_tableID");
 
 
-        //
-        // BuildTableWithFirstButton(arrayOfArrays, "StockNo_tableID");
+</script>
 
-
-        let estbl = new EasonTable();
-
-        estbl.BuildTableWithTwoButton(arrayOfArrays, "StockNo_tableID");
-
-
-    </script>
+    

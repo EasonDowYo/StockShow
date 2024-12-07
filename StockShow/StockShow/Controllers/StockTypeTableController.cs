@@ -16,6 +16,49 @@ namespace StockShow.Controllers
             _context = context;
         }
 
+        /////////////////////////////////////////////////////////
+        /// <summary>
+        /// CURD MIX
+        /// </summary>
+        /// <param name="stockTypeTable"></param>
+        /// <returns></returns>
+        /////////////////////////////////////////////////////////
+        public IActionResult StockTypeHandle()
+        {
+            List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
+            ViewBag.StockTypeList = stockType_List; // 使用ViewBag傳遞資料
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult StockTypeHandle([Bind("StockType")] StockTypeTable stockTypeTable)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+
+                    string insertSQL = $@"INSERT INTO [StockTypeTable] ([StockType]) VALUES ('{stockTypeTable.StockType}');";
+                    using (SQLHandler.DBConnect dbConn = new SQLHandler.DBConnect())
+                    {
+                        dbConn.SelectDB = SQLHandler.DBServer.DatabaseList.StockDB;
+                        //SqlCommand sqlCommand = new SqlCommand(insertSQL, dbConn.SqlConn);
+
+                        dbConn.DoOnlyExecute(insertSQL);
+                    }
+                    return RedirectToAction(nameof(StockTypeHandle));
+                }
+                catch (Exception ex)
+                {
+                    return NotFound();
+                }
+            }
+            List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
+            ViewBag.StockTypeList = stockType_List;
+            return View();
+        }
 
         public IActionResult Index()
         {
@@ -77,43 +120,7 @@ namespace StockShow.Controllers
             return View("AddStockType",data);
         }
 
-        public IActionResult StockTypeHandle()
-        {
-            List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
-            ViewBag.StockTypeList = stockType_List; // 使用ViewBag傳遞資料
-            return View(); 
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult StockTypeHandle( [Bind("StockType")] StockTypeTable stockTypeTable)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    //_context.Add(stockTypeTable);
-                    //_context.SaveChangesAsync();
-
-                    string insertSQL = $@"INSERT INTO [StockTypeTable] ([StockType]) VALUES ('{stockTypeTable.StockType}');";
-                    using(SQLHandler.DBConnect dbConn = new SQLHandler.DBConnect())
-                    {
-                        dbConn.SelectDB = SQLHandler.DBServer.DatabaseList.StockDB;
-                        //SqlCommand sqlCommand = new SqlCommand(insertSQL, dbConn.SqlConn);
-
-                        dbConn.DoOnlyExecute(insertSQL);
-                    }
-                    return RedirectToAction(nameof(StockTypeHandle));
-                }
-                catch(Exception ex) 
-                {
-                    return NotFound();
-                }
-            }
-            List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
-            ViewBag.StockTypeList = stockType_List;
-            return View("StockTypeHandle");
-        }
+        
 
         
         public async Task<IActionResult> EditStockType(string id)

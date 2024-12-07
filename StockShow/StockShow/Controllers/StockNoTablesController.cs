@@ -220,7 +220,7 @@ namespace StockShow.Controllers
         }
         [HttpPost]
         
-        public async Task<bool> Handle_Edit(StockNoTable stockNoTable)
+        public async Task<bool> Handle_Edit([FromBody] StockNoTable stockNoTable)
         {
             
             if (ModelState.IsValid)
