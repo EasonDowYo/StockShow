@@ -118,8 +118,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StockTypeHandle.cshtml",
+              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml",
+              "RelativeDocumentMoniker": "StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml",
+              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml",
+              "RelativeToolTip": "StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAJQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T08:44:13.84Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -131,19 +144,6 @@
               "ViewState": "AgIAAPIAAAAAAAAAAAAlwAMBAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-07T07:58:59.13Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StockTypeHandle.cshtml",
-              "DocumentMoniker": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml",
-              "RelativeDocumentMoniker": "StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml",
-              "ToolTip": "D:\\Code\\StockShow\\StockShow\\StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml*",
-              "RelativeToolTip": "StockShow\\Views\\StockTypeTable\\StockTypeHandle.cshtml*",
-              "ViewState": "AgIAAIQAAAAAAAAAAADwv5UAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-07T07:48:22.297Z",
               "EditorCaption": ""
             },
             {
