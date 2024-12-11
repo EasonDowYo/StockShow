@@ -7,12 +7,12 @@ namespace StockShow.Models
     {
         public StockTypeTable()
         {
-            StockNoTables = new HashSet<StockNoTable>();
+            //StockNoTables = new HashSet<StockNoTable>();
         }
 
         public int StockTypeIndex { get; set; }
         public string StockType { get; set; } = null!;
 
-        public virtual ICollection<StockNoTable> StockNoTables { get; set; }
+        //public virtual ICollection<StockNoTable> StockNoTables { get; set; }
     }
 }

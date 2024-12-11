@@ -164,11 +164,11 @@ namespace StockShow.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.StockTypeIndexNavigation)
-                    .WithMany(p => p.StockNoTables)
-                    .HasForeignKey(d => d.StockTypeIndex)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__StockNoTa__Stock__3F115E1A");
+                //entity.HasOne(d => d.StockTypeIndexNavigation)
+                //    .WithMany(p => p.StockNoTables)
+                //    .HasForeignKey(d => d.StockTypeIndex)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK__StockNoTa__Stock__3F115E1A");
             });
 
             modelBuilder.Entity<StockType>(entity =>

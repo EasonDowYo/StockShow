@@ -29,9 +29,9 @@
 
     BuildTableWithTwoButton(data, target) {
         console.log(data)
-        var table = document.getElementById(target);
+        let table = document.getElementById(target);
         table.style.border = "3px solid red";
-        var columnNames = Object.keys(data[0]);
+        let columnNames = Object.keys(data[0]);
 
         // Create Rows
         for (let i = 0; i < data.length; i++) {// i is Row number
@@ -108,8 +108,8 @@
         }
 
         // Create Header
-        var header = table.createTHead();
-        var header_row = header.insertRow(0);
+        let header = table.createTHead();
+        let header_row = header.insertRow(0);
         for (let i = 0; i < columnNames.length + 1; i++) {
             if (i == 0) {
                 let header_cell = header_row.insertCell(i);
@@ -121,8 +121,8 @@
             }
         }
 
-        var td_el = document.querySelectorAll('td');
-        for (var ii = 0; ii < td_el.length; ii++) {
+        let td_el = document.querySelectorAll('td');
+        for (let ii = 0; ii < td_el.length; ii++) {
             td_el[ii].style.padding = "3px";
             td_el[ii].style.border = "1px solid gray";
 

@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    //foreach (var a in ViewData["myData"])
+    //List<string> a = ViewData["myData"];
+    //var stringList = ViewData["myData"] as List<string>;
+    foreach (string s in ViewData["myData"] as List<string>)
+    {
+        string a = s + "_edit";
+        <div class="form-group">
+            <label class="control-label" for=@a>@a</label>
+            <input id=@a name=@a class="form-control" type="text" data-val-required="The @s field is required." />
+        </div>
+    }
+}
+<script>
+    console.log(@ViewData["myData"])
+</script>
+
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!--  Model Header  -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!--  Model Body  -->
+            <div class="modal-body">
+               
+                
+                <form action="EditStockType2">
+                    <div class="form-group">
+                        <label class="control-label" for="StockTypeIndex_edit">StockTypeIndex</label>
+                        <input id="StockTypeIndex_edit" name="StockTypeIndex_edit" class="form-control" type="text" data-val-required="The StockTypeIndex field is required." />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="StockType_edit">StockType</label>
+                        <input id="StockType_edit" name="StockType_edit" class="form-control" type="text" data-val-required="The StockType field is required." />
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" onclick="EditValuePost()">Save changes</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!--  Model Footer  -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -4,6 +4,8 @@ using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using StockShow.Models;
+using static StockShow.Controllers.DemoController;
+using System.Reflection;
 
 namespace StockShow.Controllers
 {
@@ -27,6 +29,11 @@ namespace StockShow.Controllers
         {
             List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
             ViewBag.StockTypeList = stockType_List; // 使用ViewBag傳遞資料
+
+            Type type = typeof(StockTypeTable);
+            PropertyInfo[] properties = type.GetProperties();
+            List<string> ss= properties.Select(p => p.Name).ToList();
+            ViewBag.StockTypeModelProperty = ss;
             return View();
         }
 
@@ -55,9 +62,9 @@ namespace StockShow.Controllers
                     return NotFound();
                 }
             }
-            List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
-            ViewBag.StockTypeList = stockType_List;
-            return View();
+            //List<StockTypeTable> stockType_List = _context.StockTypeTables.ToList();
+            //ViewBag.StockTypeList = stockType_List;
+            return View("StockTypeHandle");
         }
 
         public IActionResult Index()
