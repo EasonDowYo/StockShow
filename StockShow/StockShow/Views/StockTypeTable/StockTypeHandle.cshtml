@@ -3,6 +3,8 @@
 @{
     Layout = "/Views/Shared/myHomeLayout.cshtml";
     ViewBag.Title = "[Stock Type]";
+
+    ViewData["myData"] = ViewBag.StockTypeModelProperty as List<string>;
 }
 
 <!DOCTYPE html>
@@ -61,8 +63,8 @@
 
     </table>
 
-    <!-- Edit Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@*     <!-- Edit Modal -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <!--  Model Header  -->
@@ -96,7 +98,7 @@
             </div>
         </div>
     </div>
-
+ *@
 
 
     <hr />
@@ -107,20 +109,21 @@
     <!--  Stock Type Table2 using Viewbag & JS -->
     <table id="myTable2">
     </table>
-
-    <div>@Html.Raw(Json.Serialize(ViewBag.StockTypeList))</div>
+    @* <partial name="StockTypeModal/Edit" /> *@
+    <partial name="StockTypeModal/_Edit" view-data="ViewData" />
+    @* <div>@Html.Raw(Json.Serialize(ViewBag.StockTypeList))</div> *@
 
     <script type="text/javascript" src="~/js/EasonTable.js"></script>
 
     <script>
 
-        var arrayOfArrays = @Html.Raw(Json.Serialize(ViewBag.StockTypeList));
+        let arrayOfArrays = @Html.Raw(Json.Serialize(ViewBag.StockTypeList));
         //console.log(arrayOfArrays);
 
 
-        var columnNames = Object.keys(arrayOfArrays[0]);
+        let columnNames = Object.keys(arrayOfArrays[0]);
 
-        var table = document.getElementById("myTable");
+        let table = document.getElementById("myTable");
         table.style.border = "5px solid red";
 
         // Create Rows
@@ -133,16 +136,16 @@
         }
 
         // Create Header
-        var header = table.createTHead();
-        var header_row = header.insertRow(0);
+        let header = table.createTHead();
+        let header_row = header.insertRow(0);
         for (let i = 0; i < columnNames.length; i++) {
             let header_cell = header_row.insertCell(i);
             header_cell.innerHTML = columnNames[i];
         }
 
         //
-        var td_el = document.querySelectorAll('td');
-        for (var ii = 0; ii < td_el.length; ii++) {
+        let td_el = document.querySelectorAll('td');
+        for (let ii = 0; ii < td_el.length; ii++) {
             td_el[ii].style.border = "1px solid brown";
         }
 
@@ -154,8 +157,8 @@
         function EditValueInsert(_stockTypeIndex,_stockType){
             console.log(_stockType);
             console.log(_stockTypeIndex);
-            var StockTypeIndex_edit_i = document.getElementById("StockTypeIndex_edit");
-            var StockType_edit_i = document.getElementById("StockType_edit");
+            let StockTypeIndex_edit_i = document.getElementById("StockTypeIndex_edit");
+            let StockType_edit_i = document.getElementById("StockType_edit");
             StockTypeIndex_edit_i.value=_stockTypeIndex;
             StockType_edit_i.value = _stockType;
 
@@ -175,8 +178,8 @@
             xhttp.onload = function () {
                 console.log("Update Complete");
             }
-            var StockTypeIndex_edit_i = document.getElementById("StockTypeIndex_edit");
-            var StockType_edit_i = document.getElementById("StockType_edit");
+            let StockTypeIndex_edit_i = document.getElementById("StockTypeIndex_edit");
+            let StockType_edit_i = document.getElementById("StockType_edit");
             xhttp.open("POST", "/StockTypeTable/EditStockType2");
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("StockTypeIndex_edit=" + StockTypeIndex_edit_i.value + "&StockType_edit=" + StockType_edit_i.value);
